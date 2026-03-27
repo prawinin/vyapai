@@ -1,684 +1,848 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VyapAI — Pervasive Intelligence for High-Stake Verticals</title>
-  <meta name="description" content="A specialized AI product studio delivering production-ready orchestration, legal, and medical intelligence assets." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'deep-black': '#050A0E',
-            'slate-dark': '#0D1117',
-            'slate-mid': '#161B22',
-            'slate-light': '#21262D',
-            'border-dim': '#30363D',
-            'electric-blue': '#00B4D8',
-            'electric-teal': '#06D6A0',
-            'accent-glow': '#0090AD',
-            'text-primary': '#E6EDF3',
-            'text-secondary': '#8B949E',
-            'text-dim': '#484F58',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
-          },
-          backgroundImage: {
-            'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2321262D' fill-opacity='0.6'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          },
-          boxShadow: {
-            'glow-blue': '0 0 20px rgba(0, 180, 216, 0.15)',
-            'glow-teal': '0 0 20px rgba(6, 214, 160, 0.15)',
-            'card-hover': '0 8px 32px rgba(0, 180, 216, 0.12), 0 2px 8px rgba(0,0,0,0.6)',
-          },
-          animation: {
-            'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(24px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-          },
-        },
-      },
-    }
-  </script>
+  <title>VyapAI | Production AI Assets</title>
+  <meta name="description" content="VyapAI builds and sells production-ready AI assets across legal intelligence, healthcare matching, M&A document analysis, and orchestration." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body { background-color: #050A0E; }
-
-    .hero-gradient {
-      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 144, 173, 0.18) 0%, transparent 70%);
+    :root {
+      --bg-a: #f3f8ff;
+      --bg-b: #fff8ef;
+      --bg-c: #f8fff4;
+      --text: #132033;
+      --muted: #4f5f75;
+      --card: rgba(255, 255, 255, 0.84);
+      --card-border: rgba(19, 32, 51, 0.14);
+      --accent: #0a7ad8;
+      --accent-2: #11a674;
+      --glow: rgba(10, 122, 216, 0.28);
+      --radius: 18px;
+      --shadow: 0 14px 45px rgba(15, 30, 56, 0.12);
+      --container: 1120px;
     }
 
-    .card-gradient {
-      background: linear-gradient(135deg, #0D1117 0%, #161B22 100%);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .tag-pill {
-      font-size: 0.65rem;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      background: linear-gradient(-35deg, var(--bg-a), var(--bg-b), var(--bg-c), #f7f2ff);
+      background-size: 250% 250%;
+      animation: pageGradient 22s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes pageGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: min(var(--container), 92vw);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.72);
+      border-bottom: 1px solid rgba(19, 32, 51, 0.09);
+    }
+
+    .topbar-wrap {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      inline-size: 32px;
+      block-size: 32px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      background: linear-gradient(140deg, var(--accent), var(--accent-2));
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 0 0 2px rgba(17, 166, 116, 0.15);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      white-space: nowrap;
+      padding: 0.62rem 1.05rem;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      background: linear-gradient(130deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 22px rgba(10, 122, 216, 0.26);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(10, 122, 216, 0.34);
+    }
+
+    .btn-ghost {
+      color: var(--accent);
+      border-color: rgba(10, 122, 216, 0.32);
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(10, 122, 216, 0.16);
+      border-color: var(--accent);
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      isolation: isolate;
+      padding: 5.5rem 0 3.6rem;
+      overflow: hidden;
+    }
+
+    .hero-grid,
+    .hero-particles,
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-grid {
+      opacity: 0.38;
+      background-image:
+        linear-gradient(rgba(10, 122, 216, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 122, 216, 0.12) 1px, transparent 1px);
+      background-size: 44px 44px;
+      animation: gridShift 28s linear infinite;
+    }
+
+    @keyframes gridShift {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(44px, 44px, 0); }
+    }
+
+    .hero-particles {
+      opacity: 0.5;
+      background-image:
+        radial-gradient(circle at 18% 28%, rgba(10, 122, 216, 0.3) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 35%, rgba(17, 166, 116, 0.3) 0 1.8px, transparent 3px),
+        radial-gradient(circle at 42% 72%, rgba(10, 122, 216, 0.22) 0 2px, transparent 3px),
+        radial-gradient(circle at 84% 82%, rgba(17, 166, 116, 0.22) 0 1.7px, transparent 3px);
+      background-size: 240px 240px;
+      animation: driftDots 20s linear infinite;
+    }
+
+    @keyframes driftDots {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+      100% { transform: translateY(0); }
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(36rem 24rem at 16% 20%, rgba(10, 122, 216, 0.2), transparent 68%),
+        radial-gradient(30rem 20rem at 84% 70%, rgba(17, 166, 116, 0.2), transparent 70%);
+      filter: blur(6px);
+    }
+
+    .hero-shell {
+      display: grid;
+      gap: 1.4rem;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      font-family: "Space Grotesk", sans-serif;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
     }
 
-    .nav-blur {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
-    .cta-gradient {
-      background: linear-gradient(90deg, #00B4D8 0%, #06D6A0 100%);
+    h1 {
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      max-width: 14.5ch;
     }
 
-    .text-gradient {
-      background: linear-gradient(90deg, #00B4D8 0%, #06D6A0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-lead {
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: clamp(1rem, 1.7vw, 1.16rem);
     }
 
-    .founder-card {
-      background: linear-gradient(135deg, rgba(0,180,216,0.06) 0%, rgba(6,214,160,0.04) 100%);
-      border: 1px solid rgba(0,180,216,0.2);
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.4rem;
     }
 
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
+    .stats {
+      margin-top: 0.7rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
     }
 
-    .shimmer-line {
-      background: linear-gradient(90deg, transparent, rgba(0,180,216,0.08), transparent);
-      background-size: 200% 100%;
-      animation: shimmer 3s infinite;
+    .stat {
+      border: 1px solid rgba(19, 32, 51, 0.1);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(8px);
+      padding: 0.95rem;
     }
 
-    .stagger-1 { animation-delay: 0.1s; opacity: 0; }
-    .stagger-2 { animation-delay: 0.2s; opacity: 0; }
-    .stagger-3 { animation-delay: 0.3s; opacity: 0; }
-    .stagger-4 { animation-delay: 0.4s; opacity: 0; }
-    .stagger-5 { animation-delay: 0.5s; opacity: 0; }
-    .stagger-6 { animation-delay: 0.6s; opacity: 0; }
-
-    .animate-on-load { animation: fadeInUp 0.7s ease-out forwards; }
-
-    .card-project:hover .card-arrow {
-      transform: translateX(4px);
+    .stat strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.22rem;
+      margin-bottom: 0.15rem;
     }
 
-    .card-arrow {
-      transition: transform 0.2s ease;
+    .stat span {
+      font-size: 0.77rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 4.2rem 0;
+    }
+
+    .section-head {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      margin-bottom: 0.45rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 66ch;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project {
+      position: relative;
+    }
+
+    .project-toggle {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.15rem;
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(10, 122, 216, 0.45);
+      box-shadow:
+        0 0 0 1px rgba(10, 122, 216, 0.24),
+        0 18px 40px rgba(9, 28, 56, 0.16),
+        0 0 28px var(--glow);
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.7rem;
+      margin-bottom: 0.42rem;
+    }
+
+    .card-head h3 {
+      font-size: 1.2rem;
+    }
+
+    .domain {
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 0.32rem;
+      font-size: 0.97rem;
+    }
+
+    .pitch {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 0.68rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.32rem 0.6rem;
+      background: rgba(10, 122, 216, 0.12);
+      color: #074f8a;
+      border: 1px solid rgba(10, 122, 216, 0.18);
+    }
+
+    .deal {
+      border-radius: 12px;
+      border: 1px dashed rgba(19, 32, 51, 0.2);
+      background: rgba(255, 255, 255, 0.65);
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .deal-title {
+      font-weight: 800;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .deal-note {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .btn-view .less {
+      display: none;
+    }
+
+    .details {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(-10px);
+      transition: max-height 0.62s ease, opacity 0.34s ease, transform 0.34s ease, margin 0.34s ease, padding 0.34s ease;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .project-toggle:checked + .card .details {
+      max-height: 650px;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 0.88rem;
+      padding-top: 0.82rem;
+      border-top: 1px dashed rgba(19, 32, 51, 0.2);
+    }
+
+    .project-toggle:checked + .card .btn-view .more {
+      display: none;
+    }
+
+    .project-toggle:checked + .card .btn-view .less {
+      display: inline;
+    }
+
+    .details h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.42rem;
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .details ul {
+      margin-left: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+
+    .details li {
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .details .chip-row {
+      margin-bottom: 0;
+    }
+
+    .studio-wrap,
+    .contact-wrap {
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.3rem;
+    }
+
+    .studio-wrap p,
+    .contact-wrap p {
+      color: var(--muted);
+    }
+
+    .contact-points {
+      margin-top: 0.75rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .contact-points a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .contact-points a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid rgba(19, 32, 51, 0.12);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 1.4rem 0 2rem;
+      margin-top: 2.3rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      animation: fadeUp 0.74s ease forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-wrap {
+        height: auto;
+        padding: 0.7rem 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        order: 3;
+      }
+
+      .hero {
+        padding-top: 7.6rem;
+      }
+
+      .section {
+        padding: 3.1rem 0;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .card-actions {
+        width: 100%;
+      }
+
+      .card-actions .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
-<body class="font-sans text-text-primary antialiased">
-
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-deep-black/80 border-b border-border-dim/50">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-md cta-gradient flex items-center justify-center">
-            <span class="text-xs font-bold text-deep-black">V</span>
-          </div>
-          <span class="font-semibold text-text-primary tracking-tight">VyapAI</span>
-          <span class="hidden sm:inline text-text-dim text-sm ml-1">/ Venture Studio</span>
-        </div>
-        <div class="hidden md:flex items-center gap-8 text-sm text-text-secondary">
-          <a href="#portfolio" class="hover:text-electric-blue transition-colors">Portfolio</a>
-          <a href="#founder" class="hover:text-electric-blue transition-colors">Studio</a>
-          <a href="#contact" class="hover:text-electric-blue transition-colors">Contact</a>
-        </div>
-        <a
-          href="https://calendly.com/prawwiin"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="cta-gradient text-deep-black text-xs font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
-        >
-          Schedule a Call
-        </a>
-      </div>
+<body>
+  <header class="topbar">
+    <div class="container topbar-wrap">
+      <a href="#home" class="brand" aria-label="VyapAI home">
+        <span class="brand-badge">V</span>
+        <span>VyapAI</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#studio">Studio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16">
-    <div class="hero-gradient absolute inset-0 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+  <main id="home">
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-particles" aria-hidden="true"></div>
 
-    <!-- Decorative orbs -->
-    <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-electric-blue/5 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
-    <div class="absolute top-1/2 right-1/4 w-48 h-48 bg-electric-teal/5 rounded-full blur-3xl pointer-events-none animate-pulse-slow" style="animation-delay: 2s;"></div>
-
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
-      <!-- Studio tag -->
-      <div class="animate-on-load stagger-1 inline-flex items-center gap-2 bg-slate-mid border border-border-dim rounded-full px-4 py-1.5 mb-8">
-        <div class="w-1.5 h-1.5 bg-electric-teal rounded-full animate-pulse"></div>
-        <span class="text-xs font-medium text-text-secondary tracking-widest uppercase">AI Venture Studio</span>
-      </div>
-
-      <!-- Main title -->
-      <h1 class="animate-on-load stagger-2 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-6 max-w-5xl">
-        VyapAI:
-        <span class="text-gradient block sm:inline"> Pervasive Intelligence</span>
-        <br class="hidden lg:block" />
-        for High-Stake Verticals.
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="animate-on-load stagger-3 text-lg sm:text-xl text-text-secondary leading-relaxed max-w-2xl mb-10">
-        A specialized AI product studio delivering production-ready orchestration, legal, and medical intelligence assets — built for enterprise acquisition.
-      </p>
-
-      <!-- CTA buttons -->
-      <div class="animate-on-load stagger-4 flex flex-col sm:flex-row gap-4">
-        <a
-          href="https://calendly.com/prawwiin"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 cta-gradient text-deep-black font-semibold px-8 py-3.5 rounded-md hover:opacity-90 transition-all hover:shadow-glow-blue text-sm"
-        >
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3.75V6m7.5-2.25V6m-9 3h10.5m-12 8.25h13.5A2.25 2.25 0 0021 15V6.75A2.25 2.25 0 0018.75 4.5H5.25A2.25 2.25 0 003 6.75V15a2.25 2.25 0 002.25 2.25z" />
-          </svg>
-          Schedule a Call
-        </a>
-        <a
-          href="#portfolio"
-          class="inline-flex items-center justify-center gap-2 bg-slate-mid border border-border-dim text-text-primary font-medium px-8 py-3.5 rounded-md hover:border-electric-blue/50 hover:bg-slate-light transition-all text-sm"
-        >
-          Explore Assets
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </a>
-      </div>
-
-      <!-- Stats bar -->
-      <div class="animate-on-load stagger-5 mt-16 lg:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-px bg-border-dim rounded-xl overflow-hidden border border-border-dim">
-        <div class="bg-slate-dark px-6 py-5">
-          <div class="text-2xl font-bold text-text-primary mb-1">4</div>
-          <div class="text-xs text-text-secondary uppercase tracking-widest">Core Assets</div>
-        </div>
-        <div class="bg-slate-dark px-6 py-5">
-          <div class="text-2xl font-bold text-text-primary mb-1">3</div>
-          <div class="text-xs text-text-secondary uppercase tracking-widest">Verticals</div>
-        </div>
-        <div class="bg-slate-dark px-6 py-5">
-          <div class="text-2xl font-bold text-text-primary mb-1">100%</div>
-          <div class="text-xs text-text-secondary uppercase tracking-widest">Offline-First</div>
-        </div>
-        <div class="bg-slate-dark px-6 py-5">
-          <div class="text-2xl font-bold text-gradient mb-1">IIT</div>
-          <div class="text-xs text-text-secondary uppercase tracking-widest">Pedigree</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="py-24 lg:py-32 relative">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <!-- Section header -->
-      <div class="mb-16">
-        <div class="inline-flex items-center gap-2 mb-4">
-          <div class="w-8 h-px bg-electric-blue"></div>
-          <span class="text-electric-blue text-xs font-mono uppercase tracking-widest">Portfolio Assets</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-          Production-Ready AI Assets
-        </h2>
-        <p class="text-text-secondary text-lg max-w-xl">
-          Each asset is independently viable, architected for enterprise deployment, and designed for acquisition.
+      <div class="container hero-shell">
+        <p class="eyebrow reveal" style="--delay: 0.05s;">Production AI Asset Studio</p>
+        <h1 class="reveal" style="--delay: 0.15s;">Built to Deploy. Built to Buy. Built by VyapAI.</h1>
+        <p class="hero-lead reveal" style="--delay: 0.25s;">
+          VyapAI curates and ships production-ready AI systems for legal intelligence, oncology workflows, due diligence analysis, and enterprise orchestration.
         </p>
-      </div>
-
-      <!-- Cards grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- EnginAIr -->
-        <article class="card-project card-gradient border border-border-dim rounded-2xl p-8 group hover:border-electric-blue/40 hover:shadow-card-hover transition-all duration-300 cursor-pointer">
-          <div class="flex items-start justify-between mb-6">
-            <div class="w-12 h-12 rounded-xl bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center group-hover:bg-electric-blue/15 transition-colors">
-              <svg class="w-6 h-6 text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-              </svg>
-            </div>
-            <svg class="card-arrow w-5 h-5 text-text-dim group-hover:text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </div>
-
-          <div class="mb-3">
-            <h3 class="text-xl font-bold text-text-primary group-hover:text-electric-blue transition-colors mb-1">EnginAIr</h3>
-            <p class="text-text-dim text-xs font-mono uppercase tracking-widest">Enterprise Orchestration</p>
-            <span class="inline-flex mt-3 bg-electric-blue/10 border border-electric-blue/20 text-electric-blue text-xs font-semibold px-3 py-1 rounded-full">$50K</span>
-          </div>
-
-          <p class="text-text-secondary text-sm leading-relaxed mb-6">
-            Enterprise-grade AI orchestration platform for designing, deploying, and monitoring complex multi-agent workflows. Supports heterogeneous LLM backends with deterministic routing and audit trails.
-          </p>
-
-          <div class="flex flex-wrap gap-2">
-            <span class="tag-pill bg-electric-blue/10 border border-electric-blue/20 text-electric-blue px-3 py-1 rounded-full font-mono uppercase tracking-wider">Multi-Agent</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">LLM Routing</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Enterprise</span>
-          </div>
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="#enginair-details" class="inline-flex items-center justify-center gap-2 bg-slate-mid border border-border-dim text-text-primary font-medium px-4 py-2.5 rounded-md hover:border-electric-blue/50 hover:bg-slate-light transition-all text-xs">View Details</a>
-            <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 cta-gradient text-deep-black font-semibold px-4 py-2.5 rounded-md hover:opacity-90 transition-all text-xs">Request Demo</a>
-          </div>
-        </article>
-
-        <!-- AmicusAI US -->
-        <article class="card-project card-gradient border border-border-dim rounded-2xl p-8 group hover:border-electric-teal/40 hover:shadow-glow-teal transition-all duration-300 cursor-pointer">
-          <div class="flex items-start justify-between mb-6">
-            <div class="w-12 h-12 rounded-xl bg-electric-teal/10 border border-electric-teal/20 flex items-center justify-center group-hover:bg-electric-teal/15 transition-colors">
-              <svg class="w-6 h-6 text-electric-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.589-1.202L18.75 4.97zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.589-1.202L5.25 4.97z" />
-              </svg>
-            </div>
-            <svg class="card-arrow w-5 h-5 text-text-dim group-hover:text-electric-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </div>
-
-          <div class="mb-3">
-            <h3 class="text-xl font-bold text-text-primary group-hover:text-electric-teal transition-colors mb-1">AmicusAI US</h3>
-            <p class="text-text-dim text-xs font-mono uppercase tracking-widest">Legal Intelligence</p>
-            <span class="inline-flex mt-3 bg-electric-teal/10 border border-electric-teal/20 text-electric-teal text-xs font-semibold px-3 py-1 rounded-full">$35k</span>
-          </div>
-
-          <p class="text-text-secondary text-sm leading-relaxed mb-6">
-            Offline-first legal AI system purpose-built for Federal Appellate analysis. Leverages dense RAG pipelines over case law corpora with citation-grounded outputs — zero cloud dependency, maximum confidentiality.
-          </p>
-
-          <div class="flex flex-wrap gap-2">
-            <span class="tag-pill bg-electric-teal/10 border border-electric-teal/20 text-electric-teal px-3 py-1 rounded-full font-mono uppercase tracking-wider">Offline-First</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">RAG Pipeline</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Federal Law</span>
-          </div>
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="#amicusai-details" class="inline-flex items-center justify-center gap-2 bg-slate-mid border border-border-dim text-text-primary font-medium px-4 py-2.5 rounded-md hover:border-electric-teal/50 hover:bg-slate-light transition-all text-xs">View Details</a>
-            <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 cta-gradient text-deep-black font-semibold px-4 py-2.5 rounded-md hover:opacity-90 transition-all text-xs">Request Demo</a>
-          </div>
-        </article>
-
-        <!-- Ortho-Match -->
-        <article class="card-project card-gradient border border-border-dim rounded-2xl p-8 group hover:border-electric-blue/40 hover:shadow-card-hover transition-all duration-300 cursor-pointer">
-          <div class="flex items-start justify-between mb-6">
-            <div class="w-12 h-12 rounded-xl bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center group-hover:bg-electric-blue/15 transition-colors">
-              <svg class="w-6 h-6 text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
-              </svg>
-            </div>
-            <svg class="card-arrow w-5 h-5 text-text-dim group-hover:text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </div>
-
-          <div class="mb-3">
-            <h3 class="text-xl font-bold text-text-primary group-hover:text-electric-blue transition-colors mb-1">Ortho-Match</h3>
-            <p class="text-text-dim text-xs font-mono uppercase tracking-widest">Clinical AI</p>
-            <span class="inline-flex mt-3 bg-electric-blue/10 border border-electric-blue/20 text-electric-blue text-xs font-semibold px-3 py-1 rounded-full">$30k</span>
-          </div>
-
-          <p class="text-text-secondary text-sm leading-relaxed mb-6">
-            Clinical trial matching AI specialized in Orthopedic Oncology. Automates patient-to-trial eligibility mapping using structured EHR extraction and semantic criteria alignment, reducing manual triage time dramatically.
-          </p>
-
-          <div class="flex flex-wrap gap-2">
-            <span class="tag-pill bg-electric-blue/10 border border-electric-blue/20 text-electric-blue px-3 py-1 rounded-full font-mono uppercase tracking-wider">MedAI</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Clinical Trials</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Oncology</span>
-          </div>
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="#ortho-match-details" class="inline-flex items-center justify-center gap-2 bg-slate-mid border border-border-dim text-text-primary font-medium px-4 py-2.5 rounded-md hover:border-electric-blue/50 hover:bg-slate-light transition-all text-xs">View Details</a>
-            <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 cta-gradient text-deep-black font-semibold px-4 py-2.5 rounded-md hover:opacity-90 transition-all text-xs">Request Demo</a>
-          </div>
-        </article>
-
-        <!-- VDR Analyzer Core -->
-        <article class="card-project card-gradient border border-border-dim rounded-2xl p-8 group hover:border-electric-teal/40 hover:shadow-glow-teal transition-all duration-300 cursor-pointer">
-          <div class="flex items-start justify-between mb-6">
-            <div class="w-12 h-12 rounded-xl bg-electric-teal/10 border border-electric-teal/20 flex items-center justify-center group-hover:bg-electric-teal/15 transition-colors">
-              <svg class="w-6 h-6 text-electric-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-              </svg>
-            </div>
-            <svg class="card-arrow w-5 h-5 text-text-dim group-hover:text-electric-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </div>
-
-          <div class="mb-3">
-            <h3 class="text-xl font-bold text-text-primary group-hover:text-electric-teal transition-colors mb-1">VDR Analyzer Core</h3>
-            <p class="text-text-dim text-xs font-mono uppercase tracking-widest">M&A Intelligence</p>
-            <span class="inline-flex mt-3 bg-electric-teal/10 border border-electric-teal/20 text-electric-teal text-xs font-semibold px-3 py-1 rounded-full">$34K</span>
-          </div>
-
-          <p class="text-text-secondary text-sm leading-relaxed mb-6">
-            Offline M&A document intelligence engine for Virtual Data Room analysis. Delivers citation-grounded Q&A over complex deal documents — NDAs, financials, and IP filings — with zero data egress.
-          </p>
-
-          <div class="flex flex-wrap gap-2">
-            <span class="tag-pill bg-electric-teal/10 border border-electric-teal/20 text-electric-teal px-3 py-1 rounded-full font-mono uppercase tracking-wider">Offline</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">M&amp;A</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Citation Q&amp;A</span>
-          </div>
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="#vdr-analyzer-core-details" class="inline-flex items-center justify-center gap-2 bg-slate-mid border border-border-dim text-text-primary font-medium px-4 py-2.5 rounded-md hover:border-electric-teal/50 hover:bg-slate-light transition-all text-xs">View Details</a>
-            <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 cta-gradient text-deep-black font-semibold px-4 py-2.5 rounded-md hover:opacity-90 transition-all text-xs">Request Demo</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Project Details Section -->
-  <section class="py-24 lg:py-32 relative">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="mb-16">
-        <div class="inline-flex items-center gap-2 mb-4">
-          <div class="w-8 h-px bg-electric-blue"></div>
-          <span class="text-electric-blue text-xs font-mono uppercase tracking-widest">Asset Details</span>
+        <div class="hero-actions reveal" style="--delay: 0.35s;">
+          <a class="btn btn-primary" href="#projects">Explore Assets</a>
+          <a class="btn btn-ghost" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request a Walkthrough</a>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">Explore Each Asset in Detail</h2>
-      </div>
-
-      <div class="space-y-8">
-        <article id="enginair-details" class="card-gradient border border-border-dim rounded-2xl p-8">
-          <h3 class="text-2xl font-bold text-text-primary mb-2">EnginAIr</h3>
-          <p class="text-text-secondary mb-5">High-throughput AI orchestration engine for complex multi-agent workflows.</p>
-          <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mb-5">
-            <li>Pluggable model architecture (OpenAI, Gemini, Groq, SambaNova)</li>
-            <li>Persistent SQLite-backed state machine for resilient workflows</li>
-            <li>React/Vite dashboard for real-time monitoring</li>
-            <li>Docker-compose deployment with full API documentation</li>
-          </ul>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Python</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">FastAPI</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">React</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Vite</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">SQLite</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Docker</span>
-          </div>
-          <p class="text-text-secondary text-sm mb-3"><span class="text-text-primary font-medium">Transfer includes:</span> Source code, architecture docs, runbook, deployment guide, due diligence checklist, handover support.</p>
-          <p class="text-text-secondary text-sm mb-5"><span class="text-text-primary font-medium">Price range:</span> $50K — Negotiable for fast close.</p>
-          <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center cta-gradient text-deep-black font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-all text-sm">Schedule a Call</a>
-        </article>
-
-        <article id="amicusai-details" class="card-gradient border border-border-dim rounded-2xl p-8">
-          <h3 class="text-2xl font-bold text-text-primary mb-2">AmicusAI US</h3>
-          <p class="text-text-secondary mb-5">Air-gapped Legal AI for U.S. Federal Appellate litigation — 100% Attorney-Client Privilege, zero cloud dependency.</p>
-          <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mb-5">
-            <li>Runs entirely on local LLMs via Ollama — no data egress ever</li>
-            <li>Custom USFederalReranker prioritizing Supreme Court precedents</li>
-            <li>Automated ingestion pipeline over federal case law corpora</li>
-            <li>PostgreSQL + pgvector for enterprise-scale deployment</li>
-          </ul>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Python</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Ollama</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">PostgreSQL</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">pgvector</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">HuggingFace</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Docker</span>
-          </div>
-          <p class="text-text-secondary text-sm mb-3"><span class="text-text-primary font-medium">Transfer includes:</span> Source code, technical architecture doc, runbook, deployment guide, handover support.</p>
-          <p class="text-text-secondary text-sm mb-5"><span class="text-text-primary font-medium">Price range:</span> $35k — Negotiable for fast close.</p>
-          <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center cta-gradient text-deep-black font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-all text-sm">Schedule a Call</a>
-        </article>
-
-        <article id="ortho-match-details" class="card-gradient border border-border-dim rounded-2xl p-8">
-          <h3 class="text-2xl font-bold text-text-primary mb-2">Ortho-Match</h3>
-          <p class="text-text-secondary mb-5">Offline Clinical Trial Matcher for Orthopedic Oncology — HIPAA &amp; DPDP Act compliant, zero ongoing cost.</p>
-          <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mb-5">
-            <li>PubMedBERT embeddings for medical domain understanding</li>
-            <li>Hybrid search: SQL gate + FAISS semantic ranking</li>
-            <li>Explainable match results with human-readable reasons</li>
-            <li>Entirely free/open-source stack — no licensing fees</li>
-          </ul>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Python</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">PubMedBERT</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">FAISS</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">SQLite</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">FastAPI</span>
-          </div>
-          <p class="text-text-secondary text-sm mb-3"><span class="text-text-primary font-medium">Transfer includes:</span> Source code, buyer handbook, scaling guide, deployment guide, handover support.</p>
-          <p class="text-text-secondary text-sm mb-5"><span class="text-text-primary font-medium">Price range:</span> $30k — Negotiable for fast close.</p>
-          <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center cta-gradient text-deep-black font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-all text-sm">Schedule a Call</a>
-        </article>
-
-        <article id="vdr-analyzer-core-details" class="card-gradient border border-border-dim rounded-2xl p-8">
-          <h3 class="text-2xl font-bold text-text-primary mb-2">VDR Analyzer Core</h3>
-          <p class="text-text-secondary mb-5">Offline RAG pipeline for M&amp;A Virtual Data Room analysis — citation-grounded answers, zero data egress.</p>
-          <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mb-5">
-            <li>Three-stage architecture: CPU ingestion → CPU retrieval → GPU generation</li>
-            <li>Provider-agnostic LLM support (Ollama, llama.cpp, vLLM, TGI)</li>
-            <li>UUID5 deduplication for idempotent indexing</li>
-            <li>Strict citation system — every answer grounded in source documents</li>
-          </ul>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Python</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">FAISS</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Ollama</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">llama.cpp</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">FastAPI</span>
-            <span class="tag-pill bg-slate-light border border-border-dim text-text-secondary px-3 py-1 rounded-full font-mono uppercase tracking-wider">Docker</span>
-          </div>
-          <p class="text-text-secondary text-sm mb-3"><span class="text-text-primary font-medium">Transfer includes:</span> Source code, architecture doc, security doc, deployment guide, developer guide, handover support.</p>
-          <p class="text-text-secondary text-sm mb-5"><span class="text-text-primary font-medium">Price range:</span> $34K — Negotiable for fast close.</p>
-          <a href="https://calendly.com/prawwiin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center cta-gradient text-deep-black font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-all text-sm">Schedule a Call</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Differentiators Section -->
-  <section class="py-16 relative">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="shimmer-line h-px w-full mb-16"></div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-        <div class="px-4">
-          <div class="w-10 h-10 rounded-lg bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center mx-auto mb-4">
-            <svg class="w-5 h-5 text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-            </svg>
-          </div>
-          <h3 class="text-text-primary font-semibold mb-2">Privacy by Architecture</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">All assets engineered offline-first. No data egress, no cloud dependency — regulatory compliance is structural, not optional.</p>
-        </div>
-        <div class="px-4">
-          <div class="w-10 h-10 rounded-lg bg-electric-teal/10 border border-electric-teal/20 flex items-center justify-center mx-auto mb-4">
-            <svg class="w-5 h-5 text-electric-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
-            </svg>
-          </div>
-          <h3 class="text-text-primary font-semibold mb-2">Vertical Specialization</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">Each asset is purpose-built for its domain — not a horizontal tool repurposed. Deep vertical knowledge encoded in the architecture.</p>
-        </div>
-        <div class="px-4">
-          <div class="w-10 h-10 rounded-lg bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center mx-auto mb-4">
-            <svg class="w-5 h-5 text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-            </svg>
-          </div>
-          <h3 class="text-text-primary font-semibold mb-2">Production-Ready</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">Beyond demos and prototypes. These are deployable, documented, enterprise-hardened assets with clear acquisition pathways.</p>
+        <div class="stats reveal" style="--delay: 0.45s;">
+          <article class="stat">
+            <strong>4</strong>
+            <span>Production Assets</span>
+          </article>
+          <article class="stat">
+            <strong>100%</strong>
+            <span>Offline-First Builds</span>
+          </article>
+          <article class="stat">
+            <strong>Local</strong>
+            <span>Data Sovereignty</span>
+          </article>
+          <article class="stat">
+            <strong>IIT</strong>
+            <span>Data Science + AI</span>
+          </article>
         </div>
       </div>
-      <div class="shimmer-line h-px w-full mt-16"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Founder Section -->
-  <section id="founder" class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="mb-16">
-        <div class="inline-flex items-center gap-2 mb-4">
-          <div class="w-8 h-px bg-electric-teal"></div>
-          <span class="text-electric-teal text-xs font-mono uppercase tracking-widest">Studio</span>
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head reveal" style="--delay: 0.1s;">
+          <p class="eyebrow">Project Portfolio</p>
+          <h2>Acquisition-ready AI Products</h2>
+          <p>Each card includes verified strengths and stack details from the project documentation, plus inline expansion for technical depth.</p>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary">
-          Led by Deep Technical Expertise
-        </h2>
+
+        <div class="project-grid">
+          <article class="project reveal" style="--delay: 0.16s;">
+            <input class="project-toggle" id="toggle-enginair" type="checkbox" />
+            <div class="card">
+              <div class="card-head">
+                <h3>EnginAIr</h3>
+                <span class="domain">Enterprise Orchestration</span>
+              </div>
+              <p class="tagline">High-throughput AI-driven automation and orchestration engine for complex multi-agent workflows.</p>
+              <p class="pitch">Coordinates planning, execution, retries, fallback logic, and telemetry in one persistent runtime.</p>
+              <div class="chip-row">
+                <span class="chip">FastAPI</span>
+                <span class="chip">React + Vite</span>
+                <span class="chip">SQLite + SQLAlchemy</span>
+                <span class="chip">LiteLLM Routing</span>
+              </div>
+              <div class="deal">
+                <p class="deal-title">Acquisition: Contact to buy</p>
+                <p class="deal-note">Negotiable for fast close.</p>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <label class="btn btn-ghost btn-view" for="toggle-enginair"><span class="more">View Details</span><span class="less">Hide Details</span></label>
+              </div>
+              <div class="details">
+                <h4>Key strengths</h4>
+                <ul>
+                  <li>Consolidated execution path reduces orchestration overhead and cross-service latency.</li>
+                  <li>Persistent run state survives failures and supports recover or continue workflows.</li>
+                  <li>Provider-aware retry, backoff, and fallback handling improves resilience under API turbulence.</li>
+                  <li>Live dashboard telemetry keeps operations human-observable in real time.</li>
+                </ul>
+                <h4>Tech stack tags</h4>
+                <div class="chip-row">
+                  <span class="chip">Python 3.10+</span>
+                  <span class="chip">FastAPI</span>
+                  <span class="chip">TailwindCSS</span>
+                  <span class="chip">Background Worker Queue</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" style="--delay: 0.24s;">
+            <input class="project-toggle" id="toggle-amicus" type="checkbox" />
+            <div class="card">
+              <div class="card-head">
+                <h3>AmicusAI US</h3>
+                <span class="domain">Legal Intelligence</span>
+              </div>
+              <p class="tagline">Air-gapped legal AI engine tailored for U.S. Federal Appellate litigation.</p>
+              <p class="pitch">Designed for citation-grounded legal memos using local RAG without public API exposure.</p>
+              <div class="chip-row">
+                <span class="chip">FastAPI</span>
+                <span class="chip">Ollama</span>
+                <span class="chip">FAISS</span>
+                <span class="chip">PostgreSQL + pgvector Ready</span>
+              </div>
+              <div class="deal">
+                <p class="deal-title">Acquisition: Contact to buy</p>
+                <p class="deal-note">Negotiable for fast close.</p>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <label class="btn btn-ghost btn-view" for="toggle-amicus"><span class="more">View Details</span><span class="less">Hide Details</span></label>
+              </div>
+              <div class="details">
+                <h4>Key strengths</h4>
+                <ul>
+                  <li>Zero data leakage architecture via local embeddings and local LLM inference.</li>
+                  <li>Hybrid scraping plus federal API connectors creates a defensible legal data moat.</li>
+                  <li>USFederalReranker boosts precedence-aware retrieval quality across court tiers.</li>
+                  <li>Strict prompt policy constrains generation to verified, in-context legal evidence.</li>
+                </ul>
+                <h4>Tech stack tags</h4>
+                <div class="chip-row">
+                  <span class="chip">Python</span>
+                  <span class="chip">HuggingFace Embeddings</span>
+                  <span class="chip">cloudscraper</span>
+                  <span class="chip">Docker Compose</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" style="--delay: 0.32s;">
+            <input class="project-toggle" id="toggle-ortho" type="checkbox" />
+            <div class="card">
+              <div class="card-head">
+                <h3>Ortho-Match</h3>
+                <span class="domain">Clinical AI</span>
+              </div>
+              <p class="tagline">AI Clinical Trial Matcher for Orthopedic Oncology.</p>
+              <p class="pitch">Hybrid eligibility filtering and semantic ranking produce explainable trial matches in seconds.</p>
+              <div class="chip-row">
+                <span class="chip">FastAPI</span>
+                <span class="chip">Ollama Llama 3.2</span>
+                <span class="chip">PubMedBERT</span>
+                <span class="chip">FAISS + SQLite</span>
+              </div>
+              <div class="deal">
+                <p class="deal-title">Acquisition: Contact to buy</p>
+                <p class="deal-note">Negotiable for fast close.</p>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <label class="btn btn-ghost btn-view" for="toggle-ortho"><span class="more">View Details</span><span class="less">Hide Details</span></label>
+              </div>
+              <div class="details">
+                <h4>Key strengths</h4>
+                <ul>
+                  <li>100% offline design keeps patient data inside hospital-controlled infrastructure.</li>
+                  <li>Two-stage matcher combines SQL hard filters with PubMedBERT semantic ranking.</li>
+                  <li>PDF pathology extraction auto-builds structured patient profiles with schema validation.</li>
+                  <li>Recommendations are explainable with score interpretation and eligibility rationale.</li>
+                </ul>
+                <h4>Tech stack tags</h4>
+                <div class="chip-row">
+                  <span class="chip">PyMuPDF</span>
+                  <span class="chip">SQLAlchemy Async</span>
+                  <span class="chip">Pydantic</span>
+                  <span class="chip">ClinicalTrials.gov API v2</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" style="--delay: 0.4s;">
+            <input class="project-toggle" id="toggle-vdr" type="checkbox" />
+            <div class="card">
+              <div class="card-head">
+                <h3>VDR Analyzer Core</h3>
+                <span class="domain">M&amp;A Intelligence</span>
+              </div>
+              <p class="tagline">Three-stage offline RAG pipeline for Virtual Data Room due diligence.</p>
+              <p class="pitch">Separates ingestion, retrieval, and generation paths to maximize reliability on enterprise hardware.</p>
+              <div class="chip-row">
+                <span class="chip">Streamlit</span>
+                <span class="chip">Qdrant</span>
+                <span class="chip">FastEmbed BGE</span>
+                <span class="chip">Ollama or vLLM</span>
+              </div>
+              <div class="deal">
+                <p class="deal-title">Acquisition: Contact to buy</p>
+                <p class="deal-note">Negotiable for fast close.</p>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <label class="btn btn-ghost btn-view" for="toggle-vdr"><span class="more">View Details</span><span class="less">Hide Details</span></label>
+              </div>
+              <div class="details">
+                <h4>Key strengths</h4>
+                <ul>
+                  <li>CPU-heavy ingestion and retrieval paired with GPU generation balances hardware utilization.</li>
+                  <li>Deterministic UUID5 chunk IDs make re-indexing idempotent and duplication-safe.</li>
+                  <li>Citation-focused answer formatting improves analyst trust in due-diligence workflows.</li>
+                  <li>Air-gap capable operation supports strict enterprise confidentiality requirements.</li>
+                </ul>
+                <h4>Tech stack tags</h4>
+                <div class="chip-row">
+                  <span class="chip">PyMuPDF + pdfplumber</span>
+                  <span class="chip">LlamaIndex</span>
+                  <span class="chip">tenacity Retries</span>
+                  <span class="chip">Dockerized Qdrant</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="founder-card rounded-2xl p-8 lg:p-10">
-          <!-- Avatar placeholder -->
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-16 h-16 rounded-2xl cta-gradient flex items-center justify-center text-deep-black font-bold text-xl flex-shrink-0">P</div>
-            <div>
-              <div class="text-text-primary font-semibold text-lg">Studio Founder</div>
-              <div class="text-electric-teal text-sm font-mono">Data Science &amp; AI Specialist</div>
-            </div>
-          </div>
-
-          <blockquote class="text-text-secondary text-base leading-relaxed mb-8 italic border-l-2 border-electric-blue/40 pl-4">
-            "The most defensible AI products aren't the most general — they're the ones deeply embedded in a vertical's workflow, regulations, and data constraints."
-          </blockquote>
-
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-slate-dark border border-border-dim rounded-xl p-4">
-              <div class="text-electric-blue font-bold text-lg mb-1">IIT Guwahati</div>
-              <div class="text-text-dim text-xs uppercase tracking-widest">Academic Pedigree</div>
-            </div>
-            <div class="bg-slate-dark border border-border-dim rounded-xl p-4">
-              <div class="text-electric-teal font-bold text-lg mb-1">Offline-First</div>
-              <div class="text-text-dim text-xs uppercase tracking-widest">Architecture Philosophy</div>
-            </div>
-          </div>
+    <section id="studio" class="section">
+      <div class="container">
+        <div class="section-head reveal" style="--delay: 0.08s;">
+          <p class="eyebrow">Studio</p>
+          <h2>Founder</h2>
         </div>
+        <div class="studio-wrap reveal" style="--delay: 0.16s;">
+          <p>Currently building and selling production AI assets. BS in Data Science and AI at IIT Guwahati.</p>
+        </div>
+      </div>
+    </section>
 
-        <div class="space-y-6">
-          <div class="flex gap-4 items-start">
-            <div class="w-8 h-8 rounded-lg bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-text-primary font-semibold mb-1">IIT Guwahati — Data Science &amp; AI</h3>
-              <p class="text-text-secondary text-sm leading-relaxed">Rigorous technical foundation in machine learning, statistical inference, and systems design from one of India's premier engineering institutions.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-4 items-start">
-            <div class="w-8 h-8 rounded-lg bg-electric-teal/10 border border-electric-teal/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-electric-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-text-primary font-semibold mb-1">Privacy-Conscious AI Architecture</h3>
-              <p class="text-text-secondary text-sm leading-relaxed">Specializing in offline-first systems where sensitive data — legal, medical, financial — never leaves the client's environment. Privacy is architectural, not a feature toggle.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-4 items-start">
-            <div class="w-8 h-8 rounded-lg bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-text-primary font-semibold mb-1">High-Stakes Vertical Focus</h3>
-              <p class="text-text-secondary text-sm leading-relaxed">Deliberate focus on verticals where AI quality directly impacts outcomes: appellate law, oncology trials, enterprise M&amp;A. High barriers = high defensibility.</p>
-            </div>
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal" style="--delay: 0.08s;">
+          <p class="eyebrow">Contact</p>
+          <h2>Direct acquisition inquiries welcome</h2>
+        </div>
+        <div class="contact-wrap reveal" style="--delay: 0.16s;">
+          <p>Open to direct acquisition inquiries. Response usually within 24 hours.</p>
+          <div class="contact-points">
+            <a href="mailto:prawwiin@gmail.com">prawwiin@gmail.com</a>
+            <a href="mailto:k.prawin@op.iitg.ac.in">k.prawin@op.iitg.ac.in</a>
+            <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-24 lg:py-32 relative overflow-hidden">
-    <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,144,173,0.12) 0%, transparent 70%);"></div>
-
-    <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 bg-slate-mid border border-electric-blue/30 rounded-full px-4 py-1.5 mb-8">
-        <div class="w-1.5 h-1.5 bg-electric-blue rounded-full animate-pulse"></div>
-        <span class="text-xs font-medium text-electric-blue tracking-widest uppercase">Contact</span>
-      </div>
-
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-6 leading-tight">
-        Open to Direct
-        <span class="text-gradient"> Acquisition Inquiries</span>
-      </h2>
-
-      <p class="text-text-secondary text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-        Open to direct acquisition inquiries. Response within 24 hours.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-        <a
-          href="https://calendly.com/prawwiin"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 cta-gradient text-deep-black font-semibold px-10 py-4 rounded-md hover:opacity-90 transition-all hover:shadow-glow-blue text-sm"
-        >
-          Schedule a Call
-        </a>
-        <a
-          href="mailto:prawwiin@gmail.com"
-          class="inline-flex items-center justify-center gap-2 bg-slate-mid border border-border-dim text-text-primary font-medium px-10 py-4 rounded-md hover:border-electric-blue/50 hover:bg-slate-light transition-all text-sm"
-        >
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-          </svg>
-          Get in Touch
-        </a>
-      </div>
-
-      <!-- Contact details box -->
-      <div class="inline-flex flex-col sm:flex-row gap-6 bg-slate-mid border border-border-dim rounded-xl px-8 py-5 text-sm">
-        <a href="mailto:prawwiin@gmail.com" class="flex items-center gap-2.5 text-text-secondary hover:text-electric-blue transition-colors">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-          </svg>
-          prawwiin@gmail.com
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-border-dim bg-slate-dark">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-10">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <div class="w-7 h-7 rounded-md cta-gradient flex items-center justify-center">
-            <span class="text-xs font-bold text-deep-black">V</span>
-          </div>
-          <div>
-            <div class="text-text-primary font-semibold text-sm">VyapAI</div>
-            <div class="text-text-dim text-xs">AI Venture Studio</div>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-6 text-xs text-text-dim">
-          <a href="mailto:prawwiin@gmail.com" class="hover:text-text-secondary transition-colors">prawwiin@gmail.com</a>
-          <span>·</span>
-          <a href="mailto:k.prawin@op.iitg.ac.in" class="hover:text-text-secondary transition-colors">k.prawin@op.iitg.ac.in</a>
-        </div>
-
-        <div class="text-xs text-text-dim">&copy; 2026 VyapAI. All rights reserved.</div>
-      </div>
-    </div>
+  <footer>
+    &copy; 2026 VyapAI. All rights reserved. | vyapai.tech
   </footer>
-
 </body>
 </html>
