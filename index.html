@@ -307,6 +307,16 @@
       max-width: 66ch;
     }
 
+    .readiness-note {
+      border: 1px dashed rgba(19, 32, 51, 0.22);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 14px;
+      padding: 0.85rem 0.95rem;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .project-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -485,6 +495,37 @@
       padding: 1.3rem;
     }
 
+    .founder-profile {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .founder-photo {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(19, 32, 51, 0.15);
+      box-shadow: 0 14px 30px rgba(15, 30, 56, 0.18);
+      object-fit: cover;
+      aspect-ratio: 4 / 5;
+    }
+
+    .founder-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      margin-bottom: 0.32rem;
+    }
+
+    .founder-role {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      margin-bottom: 0.6rem;
+    }
+
     .studio-wrap p,
     .contact-wrap p {
       color: var(--muted);
@@ -503,8 +544,17 @@
       width: fit-content;
     }
 
+    .contact-points a.btn {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
     .contact-points a:hover {
       text-decoration: underline;
+    }
+
+    .contact-points a.btn:hover {
+      text-decoration: none;
     }
 
     footer {
@@ -575,6 +625,14 @@
       .card-actions .btn {
         width: 100%;
       }
+
+      .founder-profile {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-photo {
+        max-width: 230px;
+      }
     }
   </style>
 </head>
@@ -624,8 +682,8 @@
             <span>Data Sovereignty</span>
           </article>
           <article class="stat">
-            <strong>IIT</strong>
-            <span>Data Science + AI</span>
+            <strong>IITG</strong>
+            <span>Data Science and Artificial Intelligenge</span>
           </article>
         </div>
       </div>
@@ -638,6 +696,10 @@
           <h2>Acquisition-ready AI Products</h2>
           <p>Each card includes verified strengths and stack details from the project documentation, plus inline expansion for technical depth.</p>
         </div>
+
+        <p class="readiness-note reveal" style="--delay: 0.12s;">
+          Every asset is built and tested on standard workstation hardware for practical day-one use, and each transfer includes deployment assets for enterprise rollout: Docker or container-ready setup, architecture docs, environment templates, and integration handover guidance.
+        </p>
 
         <div class="project-grid">
           <article class="project reveal" style="--delay: 0.16s;">
@@ -654,13 +716,15 @@
                 <span class="chip">React + Vite</span>
                 <span class="chip">SQLite + SQLAlchemy</span>
                 <span class="chip">LiteLLM Routing</span>
+                <span class="chip">Docker Deployment</span>
               </div>
               <div class="deal">
                 <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close.</p>
+                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
               </div>
               <div class="card-actions">
                 <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20EnginAIr&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20EnginAIr.%20Please%20share%20next%20steps.">Buy This Asset</a>
                 <label class="btn btn-ghost btn-view" for="toggle-enginair"><span class="more">View Details</span><span class="less">Hide Details</span></label>
               </div>
               <div class="details">
@@ -670,6 +734,7 @@
                   <li>Persistent run state survives failures and supports recover or continue workflows.</li>
                   <li>Provider-aware retry, backoff, and fallback handling improves resilience under API turbulence.</li>
                   <li>Live dashboard telemetry keeps operations human-observable in real time.</li>
+                  <li>Validated on normal developer hardware and includes Dockerized deployment path for enterprise integration.</li>
                 </ul>
                 <h4>Tech stack tags</h4>
                 <div class="chip-row">
@@ -677,6 +742,7 @@
                   <span class="chip">FastAPI</span>
                   <span class="chip">TailwindCSS</span>
                   <span class="chip">Background Worker Queue</span>
+                  <span class="chip">Enterprise Handover Docs</span>
                 </div>
               </div>
             </div>
@@ -699,10 +765,11 @@
               </div>
               <div class="deal">
                 <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close.</p>
+                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
               </div>
               <div class="card-actions">
                 <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20AmicusAI%20US&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20AmicusAI%20US.%20Please%20share%20next%20steps.">Buy This Asset</a>
                 <label class="btn btn-ghost btn-view" for="toggle-amicus"><span class="more">View Details</span><span class="less">Hide Details</span></label>
               </div>
               <div class="details">
@@ -712,6 +779,7 @@
                   <li>Hybrid scraping plus federal API connectors creates a defensible legal data moat.</li>
                   <li>USFederalReranker boosts precedence-aware retrieval quality across court tiers.</li>
                   <li>Strict prompt policy constrains generation to verified, in-context legal evidence.</li>
+                  <li>Runs on a single high-end machine today and ships with migration paths to PostgreSQL plus pgvector and dedicated GPU inference nodes.</li>
                 </ul>
                 <h4>Tech stack tags</h4>
                 <div class="chip-row">
@@ -719,6 +787,7 @@
                   <span class="chip">HuggingFace Embeddings</span>
                   <span class="chip">cloudscraper</span>
                   <span class="chip">Docker Compose</span>
+                  <span class="chip">Enterprise Scale Roadmap</span>
                 </div>
               </div>
             </div>
@@ -735,16 +804,18 @@
               <p class="pitch">Hybrid eligibility filtering and semantic ranking produce explainable trial matches in seconds.</p>
               <div class="chip-row">
                 <span class="chip">FastAPI</span>
-                <span class="chip">Ollama Llama 3.2</span>
+                <span class="chip">Local LLM (Ollama, swappable)</span>
                 <span class="chip">PubMedBERT</span>
                 <span class="chip">FAISS + SQLite</span>
+                <span class="chip">Docker-ready Deployment</span>
               </div>
               <div class="deal">
                 <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close.</p>
+                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
               </div>
               <div class="card-actions">
                 <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20Ortho-Match&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20Ortho-Match.%20Please%20share%20next%20steps.">Buy This Asset</a>
                 <label class="btn btn-ghost btn-view" for="toggle-ortho"><span class="more">View Details</span><span class="less">Hide Details</span></label>
               </div>
               <div class="details">
@@ -754,6 +825,7 @@
                   <li>Two-stage matcher combines SQL hard filters with PubMedBERT semantic ranking.</li>
                   <li>PDF pathology extraction auto-builds structured patient profiles with schema validation.</li>
                   <li>Recommendations are explainable with score interpretation and eligibility rationale.</li>
+                  <li>Documented deployment options cover workstation, department server, and enterprise multi-site rollouts.</li>
                 </ul>
                 <h4>Tech stack tags</h4>
                 <div class="chip-row">
@@ -761,6 +833,7 @@
                   <span class="chip">SQLAlchemy Async</span>
                   <span class="chip">Pydantic</span>
                   <span class="chip">ClinicalTrials.gov API v2</span>
+                  <span class="chip">Enterprise Integration Support</span>
                 </div>
               </div>
             </div>
@@ -780,13 +853,15 @@
                 <span class="chip">Qdrant</span>
                 <span class="chip">FastEmbed BGE</span>
                 <span class="chip">Ollama or vLLM</span>
+                <span class="chip">Dockerized Qdrant</span>
               </div>
               <div class="deal">
                 <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close.</p>
+                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
               </div>
               <div class="card-actions">
                 <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20VDR%20Analyzer%20Core&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20VDR%20Analyzer%20Core.%20Please%20share%20next%20steps.">Buy This Asset</a>
                 <label class="btn btn-ghost btn-view" for="toggle-vdr"><span class="more">View Details</span><span class="less">Hide Details</span></label>
               </div>
               <div class="details">
@@ -796,6 +871,7 @@
                   <li>Deterministic UUID5 chunk IDs make re-indexing idempotent and duplication-safe.</li>
                   <li>Citation-focused answer formatting improves analyst trust in due-diligence workflows.</li>
                   <li>Air-gap capable operation supports strict enterprise confidentiality requirements.</li>
+                  <li>Laptop-safe defaults are included, along with documented environment tuning for enterprise hardware expansion.</li>
                 </ul>
                 <h4>Tech stack tags</h4>
                 <div class="chip-row">
@@ -803,6 +879,7 @@
                   <span class="chip">LlamaIndex</span>
                   <span class="chip">tenacity Retries</span>
                   <span class="chip">Dockerized Qdrant</span>
+                  <span class="chip">Enterprise Deployment Guide</span>
                 </div>
               </div>
             </div>
@@ -818,7 +895,14 @@
           <h2>Founder</h2>
         </div>
         <div class="studio-wrap reveal" style="--delay: 0.16s;">
-          <p>Currently building and selling production AI assets. BS in Data Science and AI at IIT Guwahati.</p>
+          <div class="founder-profile">
+            <img src="prawin-kumar.png" alt="Prawin Kumar" class="founder-photo" />
+            <div>
+              <h3 class="founder-name">Prawin Kumar</h3>
+              <p class="founder-role">Founder, VyapAI</p>
+              <p>Currently building and selling production AI assets. BS in Data Science and Artificial Intelligenge at IITG.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
