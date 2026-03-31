@@ -5,21 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VyapAI | Production AI Assets</title>
   <meta name="description" content="VyapAI builds and sells production-ready AI assets across legal intelligence, healthcare matching, M&A document analysis, and orchestration." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://vyapai.tech/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VyapAI | Production AI Assets" />
+  <meta property="og:description" content="Acquire production-ready AI systems for legal intelligence, clinical workflows, M&A analysis, and enterprise orchestration." />
+  <meta property="og:url" content="https://vyapai.tech/" />
+  <meta property="og:site_name" content="VyapAI" />
+  <meta property="og:image" content="https://vyapai.tech/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VyapAI | Production AI Assets" />
+  <meta name="twitter:description" content="Acquire production-ready AI systems for legal intelligence, clinical workflows, M&A analysis, and enterprise orchestration." />
+  <meta name="twitter:image" content="https://vyapai.tech/logo.png" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-a: #f3f8ff;
-      --bg-b: #fff8ef;
-      --bg-c: #f8fff4;
-      --text: #132033;
-      --muted: #4f5f75;
+      --bg-a: #edf3f8;
+      --bg-b: #f7f5ef;
+      --bg-c: #eef8f4;
+      --text: #0f172a;
+      --muted: #475569;
       --card: rgba(255, 255, 255, 0.84);
-      --card-border: rgba(19, 32, 51, 0.14);
-      --accent: #0a7ad8;
-      --accent-2: #11a674;
-      --glow: rgba(10, 122, 216, 0.28);
+      --card-border: rgba(15, 23, 42, 0.14);
+      --accent: #0f766e;
+      --accent-2: #0ea5a2;
+      --glow: rgba(15, 118, 110, 0.26);
       --radius: 18px;
       --shadow: 0 14px 45px rgba(15, 30, 56, 0.12);
       --container: 1120px;
@@ -36,11 +50,11 @@
     }
 
     body {
-      font-family: "Manrope", "Segoe UI", sans-serif;
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
       color: var(--text);
       min-height: 100vh;
       line-height: 1.6;
-      background: linear-gradient(-35deg, var(--bg-a), var(--bg-b), var(--bg-c), #f7f2ff);
+      background: linear-gradient(-35deg, var(--bg-a), var(--bg-b), var(--bg-c), #f3f7f9);
       background-size: 250% 250%;
       animation: pageGradient 22s ease infinite;
       overflow-x: hidden;
@@ -57,12 +71,30 @@
       margin: 0 auto;
     }
 
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.6rem 0.9rem;
+      border-radius: 0 0 8px 8px;
+      z-index: 120;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      left: 12px;
+      outline: none;
+    }
+
     .topbar {
       position: sticky;
       top: 0;
       z-index: 100;
       backdrop-filter: blur(14px);
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.82);
       border-bottom: 1px solid rgba(19, 32, 51, 0.09);
     }
 
@@ -78,7 +110,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      font-family: "Space Grotesk", sans-serif;
+      font-family: "Sora", sans-serif;
       font-weight: 700;
       letter-spacing: 0.01em;
       color: var(--text);
@@ -86,16 +118,24 @@
     }
 
     .brand-badge {
-      inline-size: 32px;
-      block-size: 32px;
+      inline-size: 38px;
+      block-size: 38px;
       border-radius: 10px;
-      display: grid;
-      place-items: center;
-      color: #ffffff;
-      background: linear-gradient(140deg, var(--accent), var(--accent-2));
-      font-weight: 700;
-      font-size: 0.9rem;
-      box-shadow: 0 0 0 2px rgba(17, 166, 116, 0.15);
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .brand-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .nav-links {
@@ -225,7 +265,7 @@
     }
 
     .eyebrow {
-      font-family: "Space Grotesk", sans-serif;
+      font-family: "Sora", sans-serif;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-size: 0.75rem;
@@ -236,7 +276,7 @@
     h1,
     h2,
     h3 {
-      font-family: "Space Grotesk", sans-serif;
+      font-family: "Sora", sans-serif;
       letter-spacing: -0.02em;
       line-height: 1.1;
     }
@@ -257,6 +297,36 @@
       flex-wrap: wrap;
       gap: 0.75rem;
       margin-top: 0.4rem;
+    }
+
+    .hero-highlights {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.1rem;
+    }
+
+    .hero-highlights li {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(15, 118, 110, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 0.88rem;
+      padding: 0.35rem 0.64rem;
+    }
+
+    .dot {
+      inline-size: 8px;
+      block-size: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 4px rgba(14, 165, 162, 0.18);
+      flex-shrink: 0;
     }
 
     .stats {
@@ -512,7 +582,7 @@
     }
 
     .founder-name {
-      font-family: "Space Grotesk", sans-serif;
+      font-family: "Sora", sans-serif;
       font-size: clamp(1.35rem, 2vw, 1.8rem);
       margin-bottom: 0.32rem;
     }
@@ -583,6 +653,17 @@
       }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
     @media (max-width: 980px) {
       .project-grid {
         grid-template-columns: 1fr;
@@ -590,6 +671,10 @@
 
       .stats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-highlights {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -637,10 +722,14 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#home">Skip to content</a>
+
   <header class="topbar">
     <div class="container topbar-wrap">
       <a href="#home" class="brand" aria-label="VyapAI home">
-        <span class="brand-badge">V</span>
+        <span class="brand-badge">
+          <img src="logo.png" alt="VyapAI logo" />
+        </span>
         <span>VyapAI</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -653,14 +742,14 @@
   </header>
 
   <main id="home">
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-particles" aria-hidden="true"></div>
 
       <div class="container hero-shell">
         <p class="eyebrow reveal" style="--delay: 0.05s;">Production AI Asset Studio</p>
-        <h1 class="reveal" style="--delay: 0.15s;">Built to Deploy. Built to Buy. Built by VyapAI.</h1>
+        <h1 id="hero-title" class="reveal" style="--delay: 0.15s;">Built to Deploy. Built to Buy. Built by VyapAI.</h1>
         <p class="hero-lead reveal" style="--delay: 0.25s;">
           VyapAI curates and ships production-ready AI systems for legal intelligence, oncology workflows, due diligence analysis, and enterprise orchestration.
         </p>
@@ -668,6 +757,12 @@
           <a class="btn btn-primary" href="#projects">Explore Assets</a>
           <a class="btn btn-ghost" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request a Walkthrough</a>
         </div>
+        <ul class="hero-highlights reveal" style="--delay: 0.4s;">
+          <li><span class="dot" aria-hidden="true"></span>Offline-first deployment architecture</li>
+          <li><span class="dot" aria-hidden="true"></span>Enterprise integration handover ready</li>
+          <li><span class="dot" aria-hidden="true"></span>Acquisition-focused transfer packages</li>
+          <li><span class="dot" aria-hidden="true"></span>Built for practical workstation hardware</li>
+        </ul>
         <div class="stats reveal" style="--delay: 0.45s;">
           <article class="stat">
             <strong>4</strong>
@@ -683,17 +778,17 @@
           </article>
           <article class="stat">
             <strong>IITG</strong>
-            <span>Data Science and Artificial Intelligenge</span>
+            <span>Data Science and Artificial Intelligence</span>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-head reveal" style="--delay: 0.1s;">
           <p class="eyebrow">Project Portfolio</p>
-          <h2>Acquisition-ready AI Products</h2>
+          <h2 id="projects-title">Acquisition-ready AI Products</h2>
           <p>Each card includes verified strengths and stack details from the project documentation, plus inline expansion for technical depth.</p>
         </div>
 
@@ -888,11 +983,11 @@
       </div>
     </section>
 
-    <section id="studio" class="section">
+    <section id="studio" class="section" aria-labelledby="studio-title">
       <div class="container">
         <div class="section-head reveal" style="--delay: 0.08s;">
           <p class="eyebrow">Studio</p>
-          <h2>Founder</h2>
+          <h2 id="studio-title">Founder</h2>
         </div>
         <div class="studio-wrap reveal" style="--delay: 0.16s;">
           <div class="founder-profile">
@@ -900,18 +995,18 @@
             <div>
               <h3 class="founder-name">Prawin Kumar</h3>
               <p class="founder-role">Founder, VyapAI</p>
-              <p>Currently building and selling production AI assets. BS in Data Science and Artificial Intelligenge at IITG.</p>
+              <p>Currently building and selling production AI assets. BS in Data Science and Artificial Intelligence at IITG.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head reveal" style="--delay: 0.08s;">
           <p class="eyebrow">Contact</p>
-          <h2>Direct acquisition inquiries welcome</h2>
+          <h2 id="contact-title">Direct acquisition inquiries welcome</h2>
         </div>
         <div class="contact-wrap reveal" style="--delay: 0.16s;">
           <p>Open to direct acquisition inquiries. Response usually within 24 hours.</p>
