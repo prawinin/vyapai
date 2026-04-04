@@ -3,1025 +3,841 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VyapAI | Production AI Assets</title>
-  <meta name="description" content="VyapAI builds and sells production-ready AI assets across legal intelligence, healthcare matching, M&A document analysis, and orchestration." />
-  <meta name="theme-color" content="#0f172a" />
+  <title>VyapAI — Enterprise AI Systems, Built to Deploy</title>
+  <meta name="description" content="VyapAI architects and delivers production-grade AI systems across legal, healthcare, finance, and enterprise operations. Scalable. Secure. Ready to integrate." />
+  <meta name="theme-color" content="#09090b" />
   <link rel="canonical" href="https://vyapai.tech/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="VyapAI | Production AI Assets" />
-  <meta property="og:description" content="Acquire production-ready AI systems for legal intelligence, clinical workflows, M&A analysis, and enterprise orchestration." />
+  <meta property="og:title" content="VyapAI — Enterprise AI Systems, Built to Deploy" />
+  <meta property="og:description" content="Production-grade AI infrastructure for legal intelligence, clinical workflows, M&A analysis, and enterprise orchestration." />
   <meta property="og:url" content="https://vyapai.tech/" />
   <meta property="og:site_name" content="VyapAI" />
   <meta property="og:image" content="https://vyapai.tech/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VyapAI | Production AI Assets" />
-  <meta name="twitter:description" content="Acquire production-ready AI systems for legal intelligence, clinical workflows, M&A analysis, and enterprise orchestration." />
+  <meta name="twitter:title" content="VyapAI — Enterprise AI Systems, Built to Deploy" />
+  <meta name="twitter:description" content="Production-grade AI infrastructure for legal intelligence, clinical workflows, M&A analysis, and enterprise orchestration." />
   <meta name="twitter:image" content="https://vyapai.tech/logo.png" />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="apple-touch-icon" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-a: #edf3f8;
-      --bg-b: #f7f5ef;
-      --bg-c: #eef8f4;
-      --text: #0f172a;
-      --muted: #475569;
-      --card: rgba(255, 255, 255, 0.84);
-      --card-border: rgba(15, 23, 42, 0.14);
-      --accent: #0f766e;
-      --accent-2: #0ea5a2;
-      --glow: rgba(15, 118, 110, 0.26);
-      --radius: 18px;
-      --shadow: 0 14px 45px rgba(15, 30, 56, 0.12);
-      --container: 1120px;
+      --bg: #09090b;
+      --bg-elevated: #131316;
+      --bg-card: rgba(19,19,22,0.7);
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.14);
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34,211,238,0.1);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', 'Courier New', monospace;
+      --max-w: 1200px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
     body {
-      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      font-family: var(--sans);
+      background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
       line-height: 1.6;
-      background: linear-gradient(-35deg, var(--bg-a), var(--bg-b), var(--bg-c), #f3f7f9);
-      background-size: 250% 250%;
-      animation: pageGradient 22s ease infinite;
       overflow-x: hidden;
     }
 
-    @keyframes pageGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    .container { width: min(var(--max-w), 90vw); margin: 0 auto; }
 
-    .container {
-      width: min(var(--container), 92vw);
-      margin: 0 auto;
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9,9,11,0.8);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
     }
-
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: 0;
-      background: #0f172a;
-      color: #ffffff;
-      padding: 0.6rem 0.9rem;
-      border-radius: 0 0 8px 8px;
-      z-index: 120;
-      text-decoration: none;
-      font-weight: 700;
+    .nav-inner {
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
     }
-
-    .skip-link:focus {
-      left: 12px;
-      outline: none;
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
     }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(255, 255, 255, 0.82);
-      border-bottom: 1px solid rgba(19, 32, 51, 0.09);
+    .nav-brand-icon {
+      width: 32px; height: 32px; border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--bg-elevated);
     }
-
-    .topbar-wrap {
-      height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: "Sora", sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .brand-badge {
-      inline-size: 38px;
-      block-size: 38px;
-      border-radius: 10px;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
-      background: #ffffff;
-      flex-shrink: 0;
-    }
-
-    .brand-badge img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;
-    }
-
+    .nav-brand-icon img { width: 100%; height: 100%; object-fit: cover; filter: invert(1) brightness(2); display: block; }
+    .nav-brand-name { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
     .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.25s ease;
+      color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 400;
+      transition: color 0.2s;
     }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      color: var(--accent);
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; padding: 8px 18px;
+      background: var(--text); color: var(--bg); border-radius: 6px;
+      font-size: 0.8125rem; font-weight: 600; text-decoration: none;
+      transition: opacity 0.2s; letter-spacing: -0.01em;
     }
+    .nav-cta:hover { opacity: 0.85; }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.01em;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-      white-space: nowrap;
-      padding: 0.62rem 1.05rem;
+    /* ── MOBILE MENU ── */
+    .nav-toggle { display: none; }
+    .nav-hamburger {
+      display: none; width: 40px; height: 40px; border: 1px solid var(--border);
+      border-radius: 6px; background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
     }
-
-    .btn:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
+    .nav-hamburger span {
+      display: block; width: 18px; height: 1.5px; background: var(--text);
+      transition: transform 0.3s var(--ease), opacity 0.2s;
     }
-
-    .btn-primary {
-      color: #ffffff;
-      background: linear-gradient(130deg, var(--accent), var(--accent-2));
-      box-shadow: 0 10px 22px rgba(10, 122, 216, 0.26);
+    .nav-toggle:checked ~ .nav-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle:checked ~ .nav-hamburger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      padding: 24px 0; flex-direction: column; align-items: center; gap: 16px;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(10, 122, 216, 0.34);
+    .nav-toggle:checked ~ .nav-mobile { display: flex; }
+    .nav-mobile a {
+      color: var(--text-secondary); text-decoration: none; font-size: 1rem;
+      font-weight: 400; transition: color 0.2s; padding: 8px 0;
     }
+    .nav-mobile a:hover { color: var(--text); }
 
-    .btn-ghost {
-      color: var(--accent);
-      border-color: rgba(10, 122, 216, 0.32);
-      background: rgba(255, 255, 255, 0.85);
-    }
-
-    .btn-ghost:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(10, 122, 216, 0.16);
-      border-color: var(--accent);
-    }
-
+    /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      isolation: isolate;
-      padding: 5.5rem 0 3.6rem;
-      overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; padding: 140px 0 100px; overflow: hidden;
     }
-
-    .hero-grid,
-    .hero-particles,
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .hero-grid {
-      opacity: 0.38;
-      background-image:
-        linear-gradient(rgba(10, 122, 216, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(10, 122, 216, 0.12) 1px, transparent 1px);
-      background-size: 44px 44px;
-      animation: gridShift 28s linear infinite;
-    }
-
-    @keyframes gridShift {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(44px, 44px, 0); }
-    }
-
-    .hero-particles {
-      opacity: 0.5;
-      background-image:
-        radial-gradient(circle at 18% 28%, rgba(10, 122, 216, 0.3) 0 2px, transparent 3px),
-        radial-gradient(circle at 70% 35%, rgba(17, 166, 116, 0.3) 0 1.8px, transparent 3px),
-        radial-gradient(circle at 42% 72%, rgba(10, 122, 216, 0.22) 0 2px, transparent 3px),
-        radial-gradient(circle at 84% 82%, rgba(17, 166, 116, 0.22) 0 1.7px, transparent 3px);
-      background-size: 240px 240px;
-      animation: driftDots 20s linear infinite;
-    }
-
-    @keyframes driftDots {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
-      100% { transform: translateY(0); }
-    }
-
-    .hero-glow {
+    .hero-bg {
+      position: absolute; inset: 0; z-index: -1;
       background:
-        radial-gradient(36rem 24rem at 16% 20%, rgba(10, 122, 216, 0.2), transparent 68%),
-        radial-gradient(30rem 20rem at 84% 70%, rgba(17, 166, 116, 0.2), transparent 70%);
-      filter: blur(6px);
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(34,211,238,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 100%, rgba(139,92,246,0.04) 0%, transparent 60%);
     }
-
-    .hero-shell {
-      display: grid;
-      gap: 1.4rem;
-      max-width: 760px;
+    .hero-grid {
+      position: absolute; inset: 0; z-index: -1; opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
     }
-
-    .eyebrow {
-      font-family: "Sora", sans-serif;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
+    .hero-content { max-width: 820px; }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+      color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1.5rem; opacity: 0;
+      animation: fadeUp 0.8s var(--ease) 0.1s forwards;
     }
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Sora", sans-serif;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400; font-style: normal;
+      font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 2rem; opacity: 0;
+      animation: fadeUp 0.8s var(--ease) 0.2s forwards;
     }
-
-    h1 {
-      font-size: clamp(2rem, 4vw, 4.2rem);
-      max-width: 14.5ch;
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem); color: var(--text-secondary);
+      max-width: 600px; line-height: 1.7; font-weight: 300;
+      margin-bottom: 2.5rem; opacity: 0;
+      animation: fadeUp 0.8s var(--ease) 0.35s forwards;
     }
-
-    .hero-lead {
-      color: var(--muted);
-      max-width: 60ch;
-      font-size: clamp(1rem, 1.7vw, 1.16rem);
-    }
-
     .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 0.4rem;
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 4rem;
+      opacity: 0; animation: fadeUp 0.8s var(--ease) 0.45s forwards;
     }
-
-    .hero-highlights {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.6rem;
-      margin-top: 0.1rem;
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      background: var(--text); color: var(--bg); border-radius: 6px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none;
+      transition: transform 0.2s var(--ease), opacity 0.2s; letter-spacing: -0.01em; border: none; cursor: pointer;
     }
-
-    .hero-highlights li {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      border: 1px solid rgba(15, 118, 110, 0.22);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.76);
-      font-weight: 600;
-      color: #1e293b;
-      font-size: 0.88rem;
-      padding: 0.35rem 0.64rem;
+    .btn-solid:hover { transform: translateY(-1px); opacity: 0.9; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      background: transparent; color: var(--text); border: 1px solid var(--border-hover);
+      border-radius: 6px; font-size: 0.875rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s var(--ease); cursor: pointer;
     }
+    .btn-outline:hover { border-color: var(--text-secondary); background: rgba(255,255,255,0.03); }
 
-    .dot {
-      inline-size: 8px;
-      block-size: 8px;
-      border-radius: 50%;
-      background: var(--accent-2);
-      box-shadow: 0 0 0 4px rgba(14, 165, 162, 0.18);
-      flex-shrink: 0;
-    }
-
-    .stats {
-      margin-top: 0.7rem;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.75rem;
-    }
-
-    .stat {
-      border: 1px solid rgba(19, 32, 51, 0.1);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.68);
-      backdrop-filter: blur(8px);
-      padding: 0.95rem;
-    }
-
-    .stat strong {
-      display: block;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.22rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .stat span {
-      font-size: 0.77rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .section {
-      padding: 4.2rem 0;
-    }
-
-    .section-head {
-      margin-bottom: 1.5rem;
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.6rem, 3vw, 2.5rem);
-      margin-bottom: 0.45rem;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 66ch;
-    }
-
-    .readiness-note {
-      border: 1px dashed rgba(19, 32, 51, 0.22);
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 14px;
-      padding: 0.85rem 0.95rem;
+    /* ── SECTION COMMON ── */
+    .section { padding: 100px 0; }
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+    .section-label {
+      font-family: var(--mono); font-size: 0.6875rem; font-weight: 500;
+      color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase;
       margin-bottom: 1rem;
-      color: var(--muted);
-      font-size: 0.9rem;
     }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+    .section-title {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400; line-height: 1.15; letter-spacing: -0.025em;
+      margin-bottom: 1rem;
     }
+    .section-desc { color: var(--text-secondary); max-width: 560px; font-size: 1.0625rem; font-weight: 300; line-height: 1.7; }
 
-    .project {
-      position: relative;
+    /* ── INDUSTRIES ── */
+    .industries-pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--border); border-radius: 12px; overflow: hidden;
+      margin-top: 3rem;
     }
-
-    .project-toggle {
-      position: absolute;
-      inline-size: 1px;
-      block-size: 1px;
-      opacity: 0;
-      pointer-events: none;
+    .industry-pillar {
+      background: var(--bg-elevated); padding: 44px 36px;
     }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.15rem;
-      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    .pillar-title {
+      font-family: var(--serif); font-size: 1.375rem; font-weight: 400;
+      margin-bottom: 20px; letter-spacing: -0.01em;
     }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(10, 122, 216, 0.45);
-      box-shadow:
-        0 0 0 1px rgba(10, 122, 216, 0.24),
-        0 18px 40px rgba(9, 28, 56, 0.16),
-        0 0 28px var(--glow);
+    .pillar-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .pillar-list li {
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.875rem; color: var(--text-secondary); font-weight: 400;
+      transition: color 0.2s, padding-left 0.3s;
     }
-
-    .card-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.7rem;
-      margin-bottom: 0.42rem;
+    .pillar-list li:last-child { border-bottom: none; }
+    .pillar-list li:hover { color: var(--text); padding-left: 4px; }
+    .industries-flow {
+      margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 8px;
     }
-
-    .card-head h3 {
-      font-size: 1.2rem;
+    .flow-tag {
+      padding: 8px 18px; border: 1px solid var(--border); border-radius: 100px;
+      font-size: 0.8125rem; color: var(--text-muted); font-weight: 400;
+      transition: all 0.25s var(--ease); cursor: default;
     }
+    .flow-tag:hover { color: var(--text); border-color: var(--border-hover); background: rgba(255,255,255,0.02); }
 
-    .domain {
-      color: var(--accent);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    /* ── SOLUTIONS / PRODUCTS ── */
+    .solutions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 3rem; align-items: start; }
+    .solution-card {
+      border: 1px solid var(--border); border-radius: 12px; padding: 36px 32px;
+      background: var(--bg-card); backdrop-filter: blur(10px);
+      transition: border-color 0.3s, transform 0.3s var(--ease); position: relative; overflow: hidden;
     }
-
-    .tagline {
-      color: var(--text);
-      font-weight: 700;
-      margin-bottom: 0.32rem;
-      font-size: 0.97rem;
+    .solution-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+    .solution-domain {
+      font-family: var(--mono); font-size: 0.6875rem; font-weight: 500;
+      color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 12px;
     }
-
-    .pitch {
-      color: var(--muted);
-      font-size: 0.93rem;
-      margin-bottom: 0.68rem;
+    .solution-card h3 { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .solution-card .tagline { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.6; font-weight: 300; margin-bottom: 20px; }
+    .solution-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .solution-stack span {
+      font-size: 0.6875rem; font-weight: 500; padding: 4px 10px;
+      border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text-muted); background: rgba(255,255,255,0.02);
     }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-bottom: 0.75rem;
+    .solution-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .solution-actions .btn-sm {
+      font-size: 0.8125rem; padding: 10px 20px; border-radius: 6px;
+      text-decoration: none; font-weight: 500; transition: all 0.2s;
     }
+    .solution-actions .btn-sm-solid { background: var(--text); color: var(--bg); }
+    .solution-actions .btn-sm-solid:hover { opacity: 0.85; }
+    .solution-actions .btn-sm-ghost { border: 1px solid var(--border); color: var(--text-secondary); background: transparent; }
+    .solution-actions .btn-sm-ghost:hover { border-color: var(--text-secondary); color: var(--text); }
 
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      padding: 0.32rem 0.6rem;
-      background: rgba(10, 122, 216, 0.12);
-      color: #074f8a;
-      border: 1px solid rgba(10, 122, 216, 0.18);
-    }
-
-    .deal {
-      border-radius: 12px;
-      border: 1px dashed rgba(19, 32, 51, 0.2);
-      background: rgba(255, 255, 255, 0.65);
-      padding: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .deal-title {
-      font-weight: 800;
-      color: var(--text);
-      font-size: 0.9rem;
-    }
-
-    .deal-note {
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    .card-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-    }
-
-    .btn-view .less {
-      display: none;
-    }
-
-    .details {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transform: translateY(-10px);
-      transition: max-height 0.62s ease, opacity 0.34s ease, transform 0.34s ease, margin 0.34s ease, padding 0.34s ease;
-      margin-top: 0;
+    /* ── DETAILS TOGGLE ── */
+    .detail-toggle { display: none; }
+    .detail-content {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.5s var(--ease), opacity 0.3s, padding 0.3s;
       padding-top: 0;
     }
+    .detail-toggle:checked ~ .detail-content {
+      max-height: 500px; opacity: 1; padding-top: 20px;
+      border-top: 1px solid var(--border); margin-top: 20px;
+    }
+    .detail-content h4 { font-size: 0.8125rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+    .detail-content ul { margin-left: 1rem; margin-bottom: 16px; }
+    .detail-content li { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.5; }
+    .detail-btn { cursor: pointer; }
+    .detail-btn .show { display: inline; }
+    .detail-btn .hide { display: none; }
+    .detail-toggle:checked ~ .solution-actions .detail-btn .show { display: none; }
+    .detail-toggle:checked ~ .solution-actions .detail-btn .hide { display: inline; }
 
-    .project-toggle:checked + .card .details {
-      max-height: 650px;
-      opacity: 1;
-      transform: translateY(0);
-      margin-top: 0.88rem;
-      padding-top: 0.82rem;
-      border-top: 1px dashed rgba(19, 32, 51, 0.2);
+    /* ── PROCESS / HOW WE WORK ── */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--border); border-radius: 12px; overflow: hidden; margin-top: 3rem;
+    }
+    .process-step {
+      background: var(--bg-elevated); padding: 40px 28px;
+      position: relative;
+    }
+    .process-num {
+      font-family: var(--serif); font-size: 2.5rem; color: rgba(255,255,255,0.06);
+      position: absolute; top: 16px; right: 20px; line-height: 1;
+    }
+    .process-step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .process-step p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── FOUNDER ── */
+    .founder-section { background: var(--bg-elevated); border-radius: 16px; padding: 60px; margin-top: 3rem; }
+    .founder-grid { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; }
+    .founder-img {
+      width: 200px; height: 240px; border-radius: 12px; object-fit: cover;
+      border: 1px solid var(--border); filter: grayscale(0.3);
+      transition: filter 0.4s;
+    }
+    .founder-img:hover { filter: grayscale(0); }
+    .founder-info h3 { font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 4px; }
+    .founder-role { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+    .founder-bio { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; font-weight: 300; max-width: 520px; }
+    .founder-credential {
+      margin-top: 16px; display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8125rem; color: var(--text-muted); font-weight: 500;
     }
 
-    .project-toggle:checked + .card .btn-view .more {
-      display: none;
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 64px; text-align: center; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, rgba(34,211,238,0.03), rgba(139,92,246,0.03));
     }
+    .cta-banner h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; margin-bottom: 12px; }
+    .cta-banner p { color: var(--text-secondary); font-size: 1.0625rem; font-weight: 300; max-width: 480px; margin: 0 auto 2rem; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
-    .project-toggle:checked + .card .btn-view .less {
-      display: inline;
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border-radius: 12px; overflow: hidden;
+      margin-top: 2rem;
     }
-
-    .details h4 {
-      font-size: 0.9rem;
-      margin-bottom: 0.42rem;
-      color: var(--accent);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+    .contact-block {
+      background: var(--bg-elevated); padding: 44px 36px;
     }
-
-    .details ul {
-      margin-left: 1rem;
-      color: var(--muted);
-      margin-bottom: 0.65rem;
+    .contact-block h3 {
+      font-size: 0.6875rem; font-weight: 600; color: var(--text-muted);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px;
     }
-
-    .details li {
-      margin-bottom: 0.35rem;
-      font-size: 0.9rem;
+    .contact-block p {
+      color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7;
+      font-weight: 300; margin-bottom: 20px;
     }
-
-    .details .chip-row {
-      margin-bottom: 0;
+    .contact-block a.contact-link {
+      display: flex; align-items: center; gap: 10px; color: var(--text-secondary);
+      text-decoration: none; font-size: 0.9375rem; font-weight: 400;
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+      transition: color 0.2s, padding-left 0.25s;
     }
+    .contact-block a.contact-link:last-of-type { border-bottom: none; }
+    .contact-block a.contact-link:hover { color: var(--text); padding-left: 4px; }
+    .contact-block a.contact-link svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--text-muted); }
+    .contact-block .btn-solid { margin-top: 20px; }
 
-    .studio-wrap,
-    .contact-wrap {
-      border: 1px solid var(--card-border);
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.3rem;
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border); padding: 48px 0;
     }
-
-    .founder-profile {
-      display: grid;
-      grid-template-columns: 220px minmax(0, 1fr);
-      gap: 1.2rem;
-      align-items: center;
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: flex-start;
     }
-
-    .founder-photo {
-      width: 100%;
-      border-radius: 16px;
-      border: 1px solid rgba(19, 32, 51, 0.15);
-      box-shadow: 0 14px 30px rgba(15, 30, 56, 0.18);
-      object-fit: cover;
-      aspect-ratio: 4 / 5;
+    .footer-left { max-width: 320px; }
+    .footer-brand { font-weight: 600; font-size: 1.05rem; margin-bottom: 12px; }
+    .footer-tagline { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .footer-cols { display: flex; gap: 64px; }
+    .footer-col h4 { font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a { display: block; color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); margin-top: 40px; padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
     }
+    .footer-bottom span { font-size: 0.8125rem; color: var(--text-muted); }
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a { color: var(--text-muted); transition: color 0.2s; }
+    .footer-social a:hover { color: var(--text); }
 
-    .founder-name {
-      font-family: "Sora", sans-serif;
-      font-size: clamp(1.35rem, 2vw, 1.8rem);
-      margin-bottom: 0.32rem;
-    }
-
-    .founder-role {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-size: 0.74rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .studio-wrap p,
-    .contact-wrap p {
-      color: var(--muted);
-    }
-
-    .contact-points {
-      margin-top: 0.75rem;
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .contact-points a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 700;
-      width: fit-content;
-    }
-
-    .contact-points a.btn {
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .contact-points a:hover {
-      text-decoration: underline;
-    }
-
-    .contact-points a.btn:hover {
-      text-decoration: none;
-    }
-
-    footer {
-      border-top: 1px solid rgba(19, 32, 51, 0.12);
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      padding: 1.4rem 0 2rem;
-      margin-top: 2.3rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      animation: fadeUp 0.74s ease forwards;
-      animation-delay: var(--delay, 0s);
-    }
-
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── CAPABILITIES STRIP ── */
+    .capabilities {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      opacity: 0; animation: fadeUp 0.8s var(--ease) 0.55s forwards;
+    }
+    .cap-item {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border: 1px solid var(--border); border-radius: 6px;
+      font-size: 0.8125rem; color: var(--text-secondary); font-weight: 400;
+      background: rgba(255,255,255,0.015);
+    }
+    .cap-item svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .industries-pillars { grid-template-columns: repeat(2, 1fr); }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { flex-direction: column; gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-cta { display: none; }
+      .hero { padding: 120px 0 60px; }
+      .hero h1 { font-size: 2.5rem; }
+      .industries-pillars { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .founder-grid { grid-template-columns: 1fr; }
+      .founder-section { padding: 36px 24px; }
+      .cta-banner { padding: 40px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-cols { flex-direction: column; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .section { padding: 60px 0; }
+    }
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-    @media (max-width: 980px) {
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .hero-highlights {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .topbar-wrap {
-        height: auto;
-        padding: 0.7rem 0;
-        flex-wrap: wrap;
-      }
-
-      .nav-links {
-        width: 100%;
-        justify-content: center;
-        order: 3;
-      }
-
-      .hero {
-        padding-top: 7.6rem;
-      }
-
-      .section {
-        padding: 3.1rem 0;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .card-actions {
-        width: 100%;
-      }
-
-      .card-actions .btn {
-        width: 100%;
-      }
-
-      .founder-profile {
-        grid-template-columns: 1fr;
-      }
-
-      .founder-photo {
-        max-width: 230px;
       }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#home">Skip to content</a>
 
-  <header class="topbar">
-    <div class="container topbar-wrap">
-      <a href="#home" class="brand" aria-label="VyapAI home">
-        <span class="brand-badge">
-          <img src="logo.png" alt="VyapAI logo" />
-        </span>
-        <span>VyapAI</span>
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-brand" aria-label="VyapAI home">
+        <div class="nav-brand-icon"><img src="logo.png" alt="VyapAI" /></div>
+        <span class="nav-brand-name">VyapAI</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#projects">Projects</a>
-        <a href="#studio">Studio</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#industries">Industries</a>
+        <a href="#process">How We Work</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
+      <a class="nav-cta" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Book a Call</a>
+      <input type="checkbox" id="menu-toggle" class="nav-toggle" />
+      <label for="menu-toggle" class="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-mobile">
+        <a href="#solutions" onclick="document.getElementById('menu-toggle').checked=false">Solutions</a>
+        <a href="#industries" onclick="document.getElementById('menu-toggle').checked=false">Industries</a>
+        <a href="#process" onclick="document.getElementById('menu-toggle').checked=false">How We Work</a>
+        <a href="#about" onclick="document.getElementById('menu-toggle').checked=false">About</a>
+        <a href="#contact" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
+        <a class="nav-cta" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer" style="margin-top: 8px">Book a Call</a>
+      </div>
     </div>
   </header>
 
-  <main id="home">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-glow" aria-hidden="true"></div>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-particles" aria-hidden="true"></div>
-
-      <div class="container hero-shell">
-        <p class="eyebrow reveal" style="--delay: 0.05s;">Production AI Asset Studio</p>
-        <h1 id="hero-title" class="reveal" style="--delay: 0.15s;">Built to Deploy. Built to Buy. Built by VyapAI.</h1>
-        <p class="hero-lead reveal" style="--delay: 0.25s;">
-          VyapAI curates and ships production-ready AI systems for legal intelligence, oncology workflows, due diligence analysis, and enterprise orchestration.
-        </p>
-        <div class="hero-actions reveal" style="--delay: 0.35s;">
-          <a class="btn btn-primary" href="#projects">Explore Assets</a>
-          <a class="btn btn-ghost" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request a Walkthrough</a>
-        </div>
-        <ul class="hero-highlights reveal" style="--delay: 0.4s;">
-          <li><span class="dot" aria-hidden="true"></span>Offline-first deployment architecture</li>
-          <li><span class="dot" aria-hidden="true"></span>Enterprise integration handover ready</li>
-          <li><span class="dot" aria-hidden="true"></span>Acquisition-focused transfer packages</li>
-          <li><span class="dot" aria-hidden="true"></span>Built for practical workstation hardware</li>
-        </ul>
-        <div class="stats reveal" style="--delay: 0.45s;">
-          <article class="stat">
-            <strong>4</strong>
-            <span>Production Assets</span>
-          </article>
-          <article class="stat">
-            <strong>100%</strong>
-            <span>Offline-First Builds</span>
-          </article>
-          <article class="stat">
-            <strong>Local</strong>
-            <span>Data Sovereignty</span>
-          </article>
-          <article class="stat">
-            <strong>IITG</strong>
-            <span>Data Science and Artificial Intelligence</span>
-          </article>
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Enterprise AI Infrastructure</p>
+          <h1>Built to Deploy.<br>Built to Buy.<br>Built by <em>VyapAI.</em></h1>
+          <p class="hero-sub">We architect and ship production-grade AI systems that enterprises deploy on day one. From legal intelligence to clinical workflows to financial analysis — our solutions are engineered for scale, security, and seamless integration.</p>
+          <div class="hero-actions">
+            <a class="btn-solid" href="#solutions">Explore Solutions →</a>
+            <a class="btn-outline" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request a Walkthrough</a>
+          </div>
+          <div class="capabilities">
+            <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>On-premise &amp; air-gapped deployment</div>
+            <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full source code &amp; IP transfer</div>
+            <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Scales to enterprise-grade hardware</div>
+            <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dockerized &amp; integration-ready</div>
+            <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Compliant data handling</div>
+            <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Technical documentation included</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section" aria-labelledby="projects-title">
+    <hr class="section-divider" />
+
+    <!-- INDUSTRIES -->
+    <section class="section" id="industries">
       <div class="container">
-        <div class="section-head reveal" style="--delay: 0.1s;">
-          <p class="eyebrow">Project Portfolio</p>
-          <h2 id="projects-title">Acquisition-ready AI Products</h2>
-          <p>Each card includes verified strengths and stack details from the project documentation, plus inline expansion for technical depth.</p>
+        <p class="section-label reveal">Industries</p>
+        <h2 class="section-title reveal">We build for every sector.<br>No exceptions.</h2>
+        <p class="section-desc reveal">Our AI systems are architected with domain-specific constraints in mind — regulatory compliance, data sovereignty, operational cadence, and hardware realities unique to each industry.</p>
+
+        <div class="industries-pillars reveal">
+          <div class="industry-pillar">
+            <h3 class="pillar-title">Financial Services</h3>
+            <ul class="pillar-list">
+              <li>Banking & Capital Markets</li>
+              <li>Insurance & Risk</li>
+              <li>M&A & Due Diligence</li>
+              <li>Accounting & Audit</li>
+              <li>Wealth Management</li>
+            </ul>
+          </div>
+          <div class="industry-pillar">
+            <h3 class="pillar-title">Healthcare & Sciences</h3>
+            <ul class="pillar-list">
+              <li>Clinical Trials & Oncology</li>
+              <li>Pharmaceuticals</li>
+              <li>Hospital Operations</li>
+              <li>Medical Devices</li>
+              <li>Life Sciences R&D</li>
+            </ul>
+          </div>
+          <div class="industry-pillar">
+            <h3 class="pillar-title">Public Sector</h3>
+            <ul class="pillar-list">
+              <li>Defense & Intelligence</li>
+              <li>Federal & State Government</li>
+              <li>Law Enforcement</li>
+              <li>Education & Research</li>
+              <li>Public Infrastructure</li>
+            </ul>
+          </div>
+          <div class="industry-pillar">
+            <h3 class="pillar-title">Industrial & Energy</h3>
+            <ul class="pillar-list">
+              <li>Manufacturing & Engineering</li>
+              <li>Oil, Gas & Mining</li>
+              <li>Energy & Utilities</li>
+              <li>Construction & Real Estate</li>
+              <li>Aerospace & Aviation</li>
+            </ul>
+          </div>
+          <div class="industry-pillar">
+            <h3 class="pillar-title">Legal & Professional</h3>
+            <ul class="pillar-list">
+              <li>Litigation & Compliance</li>
+              <li>Consulting & Advisory</li>
+              <li>Human Resources</li>
+              <li>Publishing & Media</li>
+              <li>Professional Services</li>
+            </ul>
+          </div>
+          <div class="industry-pillar">
+            <h3 class="pillar-title">Commerce & Logistics</h3>
+            <ul class="pillar-list">
+              <li>Retail & E-Commerce</li>
+              <li>Supply Chain & Logistics</li>
+              <li>Telecommunications</li>
+              <li>Hospitality & Travel</li>
+              <li>Agriculture & Food</li>
+            </ul>
+          </div>
         </div>
 
-        <p class="readiness-note reveal" style="--delay: 0.12s;">
-          Every asset is built and tested on standard workstation hardware for practical day-one use, and each transfer includes deployment assets for enterprise rollout: Docker or container-ready setup, architecture docs, environment templates, and integration handover guidance.
-        </p>
-
-        <div class="project-grid">
-          <article class="project reveal" style="--delay: 0.16s;">
-            <input class="project-toggle" id="toggle-enginair" type="checkbox" />
-            <div class="card">
-              <div class="card-head">
-                <h3>EnginAIr</h3>
-                <span class="domain">Enterprise Orchestration</span>
-              </div>
-              <p class="tagline">High-throughput AI-driven automation and orchestration engine for complex multi-agent workflows.</p>
-              <p class="pitch">Coordinates planning, execution, retries, fallback logic, and telemetry in one persistent runtime.</p>
-              <div class="chip-row">
-                <span class="chip">FastAPI</span>
-                <span class="chip">React + Vite</span>
-                <span class="chip">SQLite + SQLAlchemy</span>
-                <span class="chip">LiteLLM Routing</span>
-                <span class="chip">Docker Deployment</span>
-              </div>
-              <div class="deal">
-                <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
-              </div>
-              <div class="card-actions">
-                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
-                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20EnginAIr&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20EnginAIr.%20Please%20share%20next%20steps.">Buy This Asset</a>
-                <label class="btn btn-ghost btn-view" for="toggle-enginair"><span class="more">View Details</span><span class="less">Hide Details</span></label>
-              </div>
-              <div class="details">
-                <h4>Key strengths</h4>
-                <ul>
-                  <li>Consolidated execution path reduces orchestration overhead and cross-service latency.</li>
-                  <li>Persistent run state survives failures and supports recover or continue workflows.</li>
-                  <li>Provider-aware retry, backoff, and fallback handling improves resilience under API turbulence.</li>
-                  <li>Live dashboard telemetry keeps operations human-observable in real time.</li>
-                  <li>Validated on normal developer hardware and includes Dockerized deployment path for enterprise integration.</li>
-                </ul>
-                <h4>Tech stack tags</h4>
-                <div class="chip-row">
-                  <span class="chip">Python 3.10+</span>
-                  <span class="chip">FastAPI</span>
-                  <span class="chip">TailwindCSS</span>
-                  <span class="chip">Background Worker Queue</span>
-                  <span class="chip">Enterprise Handover Docs</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project reveal" style="--delay: 0.24s;">
-            <input class="project-toggle" id="toggle-amicus" type="checkbox" />
-            <div class="card">
-              <div class="card-head">
-                <h3>AmicusAI US</h3>
-                <span class="domain">Legal Intelligence</span>
-              </div>
-              <p class="tagline">Air-gapped legal AI engine tailored for U.S. Federal Appellate litigation.</p>
-              <p class="pitch">Designed for citation-grounded legal memos using local RAG without public API exposure.</p>
-              <div class="chip-row">
-                <span class="chip">FastAPI</span>
-                <span class="chip">Ollama</span>
-                <span class="chip">FAISS</span>
-                <span class="chip">PostgreSQL + pgvector Ready</span>
-              </div>
-              <div class="deal">
-                <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
-              </div>
-              <div class="card-actions">
-                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
-                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20AmicusAI%20US&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20AmicusAI%20US.%20Please%20share%20next%20steps.">Buy This Asset</a>
-                <label class="btn btn-ghost btn-view" for="toggle-amicus"><span class="more">View Details</span><span class="less">Hide Details</span></label>
-              </div>
-              <div class="details">
-                <h4>Key strengths</h4>
-                <ul>
-                  <li>Zero data leakage architecture via local embeddings and local LLM inference.</li>
-                  <li>Hybrid scraping plus federal API connectors creates a defensible legal data moat.</li>
-                  <li>USFederalReranker boosts precedence-aware retrieval quality across court tiers.</li>
-                  <li>Strict prompt policy constrains generation to verified, in-context legal evidence.</li>
-                  <li>Runs on a single high-end machine today and ships with migration paths to PostgreSQL plus pgvector and dedicated GPU inference nodes.</li>
-                </ul>
-                <h4>Tech stack tags</h4>
-                <div class="chip-row">
-                  <span class="chip">Python</span>
-                  <span class="chip">HuggingFace Embeddings</span>
-                  <span class="chip">cloudscraper</span>
-                  <span class="chip">Docker Compose</span>
-                  <span class="chip">Enterprise Scale Roadmap</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project reveal" style="--delay: 0.32s;">
-            <input class="project-toggle" id="toggle-ortho" type="checkbox" />
-            <div class="card">
-              <div class="card-head">
-                <h3>Ortho-Match</h3>
-                <span class="domain">Clinical AI</span>
-              </div>
-              <p class="tagline">AI Clinical Trial Matcher for Orthopedic Oncology.</p>
-              <p class="pitch">Hybrid eligibility filtering and semantic ranking produce explainable trial matches in seconds.</p>
-              <div class="chip-row">
-                <span class="chip">FastAPI</span>
-                <span class="chip">Local LLM (Ollama, swappable)</span>
-                <span class="chip">PubMedBERT</span>
-                <span class="chip">FAISS + SQLite</span>
-                <span class="chip">Docker-ready Deployment</span>
-              </div>
-              <div class="deal">
-                <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
-              </div>
-              <div class="card-actions">
-                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
-                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20Ortho-Match&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20Ortho-Match.%20Please%20share%20next%20steps.">Buy This Asset</a>
-                <label class="btn btn-ghost btn-view" for="toggle-ortho"><span class="more">View Details</span><span class="less">Hide Details</span></label>
-              </div>
-              <div class="details">
-                <h4>Key strengths</h4>
-                <ul>
-                  <li>100% offline design keeps patient data inside hospital-controlled infrastructure.</li>
-                  <li>Two-stage matcher combines SQL hard filters with PubMedBERT semantic ranking.</li>
-                  <li>PDF pathology extraction auto-builds structured patient profiles with schema validation.</li>
-                  <li>Recommendations are explainable with score interpretation and eligibility rationale.</li>
-                  <li>Documented deployment options cover workstation, department server, and enterprise multi-site rollouts.</li>
-                </ul>
-                <h4>Tech stack tags</h4>
-                <div class="chip-row">
-                  <span class="chip">PyMuPDF</span>
-                  <span class="chip">SQLAlchemy Async</span>
-                  <span class="chip">Pydantic</span>
-                  <span class="chip">ClinicalTrials.gov API v2</span>
-                  <span class="chip">Enterprise Integration Support</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project reveal" style="--delay: 0.4s;">
-            <input class="project-toggle" id="toggle-vdr" type="checkbox" />
-            <div class="card">
-              <div class="card-head">
-                <h3>VDR Analyzer Core</h3>
-                <span class="domain">M&amp;A Intelligence</span>
-              </div>
-              <p class="tagline">Three-stage offline RAG pipeline for Virtual Data Room due diligence.</p>
-              <p class="pitch">Separates ingestion, retrieval, and generation paths to maximize reliability on enterprise hardware.</p>
-              <div class="chip-row">
-                <span class="chip">Streamlit</span>
-                <span class="chip">Qdrant</span>
-                <span class="chip">FastEmbed BGE</span>
-                <span class="chip">Ollama or vLLM</span>
-                <span class="chip">Dockerized Qdrant</span>
-              </div>
-              <div class="deal">
-                <p class="deal-title">Acquisition: Contact to buy</p>
-                <p class="deal-note">Negotiable for fast close. Includes enterprise integration handover pack.</p>
-              </div>
-              <div class="card-actions">
-                <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
-                <a class="btn btn-ghost" href="mailto:prawwiin@gmail.com?subject=Interested%20in%20buying%20VDR%20Analyzer%20Core&amp;body=Hey%20Prawin%20Kumar%2C%20I%20am%20interested%20in%20buying%20VDR%20Analyzer%20Core.%20Please%20share%20next%20steps.">Buy This Asset</a>
-                <label class="btn btn-ghost btn-view" for="toggle-vdr"><span class="more">View Details</span><span class="less">Hide Details</span></label>
-              </div>
-              <div class="details">
-                <h4>Key strengths</h4>
-                <ul>
-                  <li>CPU-heavy ingestion and retrieval paired with GPU generation balances hardware utilization.</li>
-                  <li>Deterministic UUID5 chunk IDs make re-indexing idempotent and duplication-safe.</li>
-                  <li>Citation-focused answer formatting improves analyst trust in due-diligence workflows.</li>
-                  <li>Air-gap capable operation supports strict enterprise confidentiality requirements.</li>
-                  <li>Laptop-safe defaults are included, along with documented environment tuning for enterprise hardware expansion.</li>
-                </ul>
-                <h4>Tech stack tags</h4>
-                <div class="chip-row">
-                  <span class="chip">PyMuPDF + pdfplumber</span>
-                  <span class="chip">LlamaIndex</span>
-                  <span class="chip">tenacity Retries</span>
-                  <span class="chip">Dockerized Qdrant</span>
-                  <span class="chip">Enterprise Deployment Guide</span>
-                </div>
-              </div>
-            </div>
-          </article>
+        <div class="industries-flow reveal">
+          <span class="flow-tag">Document Intelligence</span>
+          <span class="flow-tag">Workflow Automation</span>
+          <span class="flow-tag">Predictive Analytics</span>
+          <span class="flow-tag">Compliance Monitoring</span>
+          <span class="flow-tag">Data Room Analysis</span>
+          <span class="flow-tag">Clinical Matching</span>
+          <span class="flow-tag">Risk Assessment</span>
+          <span class="flow-tag">Process Optimization</span>
+          <span class="flow-tag">Knowledge Extraction</span>
+          <span class="flow-tag">Multi-Agent Orchestration</span>
+          <span class="flow-tag">Air-Gapped Inference</span>
+          <span class="flow-tag">Citation Grounding</span>
         </div>
       </div>
     </section>
 
-    <section id="studio" class="section" aria-labelledby="studio-title">
+    <hr class="section-divider" />
+
+    <!-- SOLUTIONS -->
+    <section class="section" id="solutions">
       <div class="container">
-        <div class="section-head reveal" style="--delay: 0.08s;">
-          <p class="eyebrow">Studio</p>
-          <h2 id="studio-title">Founder</h2>
+        <p class="section-label reveal">Solutions</p>
+        <h2 class="section-title reveal">Production systems,<br>not prototypes</h2>
+        <p class="section-desc reveal">Each solution ships with full source code, deployment architecture, technical documentation, and integration support. Ready for enterprise hardware from day one.</p>
+
+        <div class="solutions-grid">
+
+          <!-- EnginAIr -->
+          <div class="solution-card reveal">
+            <input type="checkbox" id="d1" class="detail-toggle" />
+            <p class="solution-domain">Enterprise Orchestration</p>
+            <h3>EnginAIr</h3>
+            <p class="tagline">High-throughput AI orchestration engine for complex multi-agent workflows. Coordinates planning, execution, retries, fallback logic, and telemetry in one persistent runtime.</p>
+            <div class="solution-stack">
+              <span>FastAPI</span><span>React + Vite</span><span>SQLAlchemy</span><span>LiteLLM</span><span>Docker</span>
+            </div>
+            <div class="solution-actions">
+              <a class="btn-sm btn-sm-solid" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+              <a class="btn-sm btn-sm-ghost" href="mailto:prawwiin@gmail.com?subject=EnginAIr%20%E2%80%94%20Enterprise%20Inquiry&body=Hi%20VyapAI%20Team%2C%0A%0AI%E2%80%99m%20interested%20in%20learning%20more%20about%20EnginAIr%20%E2%80%94%20your%20AI%20orchestration%20engine%20for%20multi-agent%20workflows.%0A%0ACould%20you%20share%20details%20on%20licensing%2C%20deployment%20architecture%2C%20and%20integration%20requirements%3F%0A%0AOrganisation%3A%20%0AUse%20Case%3A%20%0ATimeline%3A%20%0A%0AThank%20you.">Inquire</a>
+              <label for="d1" class="btn-sm btn-sm-ghost detail-btn"><span class="show">Details ↓</span><span class="hide">Close ↑</span></label>
+            </div>
+            <div class="detail-content">
+              <h4>Key Strengths</h4>
+              <ul>
+                <li>Consolidated execution path reduces orchestration overhead and cross-service latency</li>
+                <li>Persistent run state survives failures with recover-or-continue workflows</li>
+                <li>Provider-aware retry, backoff, and fallback handling under API turbulence</li>
+                <li>Live dashboard telemetry with real-time observability</li>
+                <li>Dockerized deployment, validated on standard developer hardware</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- AmicusAI -->
+          <div class="solution-card reveal">
+            <input type="checkbox" id="d2" class="detail-toggle" />
+            <p class="solution-domain">Legal Intelligence</p>
+            <h3>AmicusAI US</h3>
+            <p class="tagline">Air-gapped legal AI engine for U.S. Federal Appellate litigation. Citation-grounded legal memos using local RAG without any public API exposure.</p>
+            <div class="solution-stack">
+              <span>FastAPI</span><span>Ollama</span><span>FAISS</span><span>pgvector Ready</span><span>Docker</span>
+            </div>
+            <div class="solution-actions">
+              <a class="btn-sm btn-sm-solid" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+              <a class="btn-sm btn-sm-ghost" href="mailto:prawwiin@gmail.com?subject=AmicusAI%20US%20%E2%80%94%20Enterprise%20Inquiry&body=Hi%20VyapAI%20Team%2C%0A%0AI%E2%80%99m%20interested%20in%20AmicusAI%20US%20%E2%80%94%20your%20AI-powered%20legal%20research%20and%20brief%20generation%20system.%0A%0ACould%20you%20share%20details%20on%20licensing%2C%20deployment%20options%2C%20and%20compliance%20capabilities%3F%0A%0AOrganisation%3A%20%0AUse%20Case%3A%20%0ATimeline%3A%20%0A%0AThank%20you.">Inquire</a>
+              <label for="d2" class="btn-sm btn-sm-ghost detail-btn"><span class="show">Details ↓</span><span class="hide">Close ↑</span></label>
+            </div>
+            <div class="detail-content">
+              <h4>Key Strengths</h4>
+              <ul>
+                <li>Zero data leakage via local embeddings and local LLM inference</li>
+                <li>Hybrid scraping plus federal API connectors creates a defensible legal data moat</li>
+                <li>USFederalReranker boosts precedence-aware retrieval across court tiers</li>
+                <li>Strict prompt policy constrains generation to verified, in-context legal evidence</li>
+                <li>Migration paths to PostgreSQL + pgvector and dedicated GPU inference nodes</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Ortho-Match -->
+          <div class="solution-card reveal">
+            <input type="checkbox" id="d3" class="detail-toggle" />
+            <p class="solution-domain">Clinical AI</p>
+            <h3>Ortho-Match</h3>
+            <p class="tagline">AI clinical trial matcher for orthopedic oncology. Hybrid eligibility filtering and semantic ranking produce explainable trial matches in seconds.</p>
+            <div class="solution-stack">
+              <span>PubMedBERT</span><span>FAISS</span><span>FastAPI</span><span>Ollama</span><span>Docker</span>
+            </div>
+            <div class="solution-actions">
+              <a class="btn-sm btn-sm-solid" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+              <a class="btn-sm btn-sm-ghost" href="mailto:prawwiin@gmail.com?subject=Ortho-Match%20%E2%80%94%20Enterprise%20Inquiry&body=Hi%20VyapAI%20Team%2C%0A%0AI%E2%80%99m%20interested%20in%20Ortho-Match%20%E2%80%94%20your%20clinical%20trial%20matcher%20for%20orthopedic%20oncology.%0A%0ACould%20you%20share%20details%20on%20licensing%2C%20HIPAA%20compliance%2C%20and%20deployment%20requirements%3F%0A%0AOrganisation%3A%20%0AUse%20Case%3A%20%0ATimeline%3A%20%0A%0AThank%20you.">Inquire</a>
+              <label for="d3" class="btn-sm btn-sm-ghost detail-btn"><span class="show">Details ↓</span><span class="hide">Close ↑</span></label>
+            </div>
+            <div class="detail-content">
+              <h4>Key Strengths</h4>
+              <ul>
+                <li>100% offline — patient data stays inside hospital-controlled infrastructure</li>
+                <li>Two-stage matcher: SQL hard filters + PubMedBERT semantic ranking</li>
+                <li>PDF pathology extraction auto-builds structured patient profiles</li>
+                <li>Explainable recommendations with score interpretation and eligibility rationale</li>
+                <li>Documented deployment: workstation, department server, and multi-site rollouts</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- VDR Analyzer -->
+          <div class="solution-card reveal">
+            <input type="checkbox" id="d4" class="detail-toggle" />
+            <p class="solution-domain">M&A Intelligence</p>
+            <h3>VDR Analyzer Core</h3>
+            <p class="tagline">Three-stage offline RAG pipeline for virtual data room due diligence. Separates ingestion, retrieval, and generation to maximize reliability on enterprise hardware.</p>
+            <div class="solution-stack">
+              <span>Qdrant</span><span>FastEmbed BGE</span><span>LlamaIndex</span><span>Ollama / vLLM</span><span>Docker</span>
+            </div>
+            <div class="solution-actions">
+              <a class="btn-sm btn-sm-solid" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Request Demo</a>
+              <a class="btn-sm btn-sm-ghost" href="mailto:prawwiin@gmail.com?subject=VDR%20Analyzer%20Core%20%E2%80%94%20Enterprise%20Inquiry&body=Hi%20VyapAI%20Team%2C%0A%0AI%E2%80%99m%20interested%20in%20VDR%20Analyzer%20Core%20%E2%80%94%20your%20offline%20RAG%20pipeline%20for%20virtual%20data%20room%20due%20diligence.%0A%0ACould%20you%20share%20details%20on%20licensing%2C%20air-gapped%20deployment%2C%20and%20integration%20options%3F%0A%0AOrganisation%3A%20%0AUse%20Case%3A%20%0ATimeline%3A%20%0A%0AThank%20you.">Inquire</a>
+              <label for="d4" class="btn-sm btn-sm-ghost detail-btn"><span class="show">Details ↓</span><span class="hide">Close ↑</span></label>
+            </div>
+            <div class="detail-content">
+              <h4>Key Strengths</h4>
+              <ul>
+                <li>CPU-heavy ingestion + GPU generation balances hardware utilisation</li>
+                <li>Deterministic UUID5 chunk IDs make re-indexing idempotent and duplication-safe</li>
+                <li>Citation-focused formatting improves analyst trust in due-diligence workflows</li>
+                <li>Air-gap capable for strict enterprise confidentiality requirements</li>
+                <li>Laptop-safe defaults with documented environment tuning for enterprise expansion</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
-        <div class="studio-wrap reveal" style="--delay: 0.16s;">
-          <div class="founder-profile">
-            <img src="prawin-kumar.png" alt="Prawin Kumar" class="founder-photo" />
-            <div>
-              <h3 class="founder-name">Prawin Kumar</h3>
-              <p class="founder-role">Founder, VyapAI</p>
-              <p>Currently building and selling production AI assets. BS in Data Science and Artificial Intelligence at IITG.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="container">
+        <p class="section-label reveal">How We Work</p>
+        <h2 class="section-title reveal">From conversation<br>to deployment</h2>
+        <p class="section-desc reveal">A transparent, repeatable process designed to minimise risk and maximise time-to-value for your organisation.</p>
+        <div class="process-grid reveal">
+          <div class="process-step">
+            <span class="process-num">01</span>
+            <h3>Discovery</h3>
+            <p>We map your domain constraints, compliance requirements, data topology, and hardware environment to scope the right solution.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">02</span>
+            <h3>Architecture</h3>
+            <p>Solutions are designed offline-first with modular components — swappable LLMs, configurable pipelines, and enterprise database migration paths.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">03</span>
+            <h3>Integration</h3>
+            <p>Full Dockerized deployment with API-first design. We handle environment configuration, data migration, and system handover documentation.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">04</span>
+            <h3>Transfer</h3>
+            <p>Clean IP handover with complete source code, technical documentation, deployment guides, and optional ongoing advisory support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section-label reveal">About</p>
+        <h2 class="section-title reveal">The studio behind<br>the systems</h2>
+        <div class="founder-section reveal">
+          <div class="founder-grid">
+            <img src="prawin-kumar.png" alt="Prawin Kumar" class="founder-img" />
+            <div class="founder-info">
+              <h3>Prawin Kumar</h3>
+              <p class="founder-role">Founder & Lead Engineer — VyapAI</p>
+              <p class="founder-bio">Building production AI systems that enterprises can deploy, scale, and own. Every solution we ship is engineered for real-world constraints — air-gapped networks, compliance-sensitive data, and practical hardware limitations.</p>
+              <p class="founder-bio" style="margin-top: 12px">VyapAI exists to bridge the gap between AI research and enterprise operations. We don't build demos. We build systems that work on the infrastructure you already have.</p>
+              <div class="founder-credential">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                BS in Data Science & Artificial Intelligence — IIT Guwahati
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section" aria-labelledby="contact-title">
+    <hr class="section-divider" />
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
       <div class="container">
-        <div class="section-head reveal" style="--delay: 0.08s;">
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">Direct acquisition inquiries welcome</h2>
-        </div>
-        <div class="contact-wrap reveal" style="--delay: 0.16s;">
-          <p>Open to direct acquisition inquiries. Response usually within 24 hours.</p>
-          <div class="contact-points">
-            <a href="mailto:prawwiin@gmail.com">prawwiin@gmail.com</a>
-            <a href="mailto:k.prawin@op.iitg.ac.in">k.prawin@op.iitg.ac.in</a>
-            <a class="btn btn-primary" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
+        <p class="section-label reveal">Contact</p>
+        <h2 class="section-title reveal">Let's discuss<br>your use case</h2>
+        <p class="section-desc reveal">Whether you're exploring enterprise licensing, custom deployments, IP acquisition, or need a technical walkthrough — we're ready to talk.</p>
+
+        <div class="contact-grid reveal">
+          <div class="contact-block">
+            <h3>Get in Touch</h3>
+            <p>Tell us about your infrastructure, compliance requirements, and deployment timeline. We typically respond within 24 hours.</p>
+            <a class="contact-link" href="mailto:prawwiin@gmail.com?subject=VyapAI%20%E2%80%94%20Enterprise%20Inquiry&body=Hi%20VyapAI%20Team%2C%0A%0AI%E2%80%99m%20interested%20in%20exploring%20your%20AI%20solutions%20for%20our%20organisation.%0A%0ACould%20we%20schedule%20a%20conversation%20to%20discuss%20our%20requirements%3F%0A%0AOrganisation%3A%20%0AIndustry%3A%20%0AUse%20Case%3A%20%0A%0AThank%20you.">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              prawwiin@gmail.com
+            </a>
+            <a class="contact-link" href="mailto:k.prawin@op.iitg.ac.in?subject=VyapAI%20%E2%80%94%20Enterprise%20Inquiry&body=Hi%20VyapAI%20Team%2C%0A%0AI%E2%80%99m%20interested%20in%20exploring%20your%20AI%20solutions%20for%20our%20organisation.%0A%0ACould%20we%20schedule%20a%20conversation%20to%20discuss%20our%20requirements%3F%0A%0AOrganisation%3A%20%0AIndustry%3A%20%0AUse%20Case%3A%20%0A%0AThank%20you.">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              k.prawin@op.iitg.ac.in
+            </a>
+          </div>
+          <div class="contact-block">
+            <h3>Schedule a Conversation</h3>
+            <p>Book a 30-minute call to walk through deployment architecture, integration requirements, and licensing options for your organisation.</p>
+            <a class="btn-solid" href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Schedule a Call →</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    &copy; 2026 VyapAI. All rights reserved. | vyapai.tech
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-brand">VyapAI</div>
+          <p class="footer-tagline">Production-grade AI systems for enterprises. Built to deploy. Built to scale. Built to own.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Solutions</h4>
+            <a href="#solutions">EnginAIr</a>
+            <a href="#solutions">AmicusAI US</a>
+            <a href="#solutions">Ortho-Match</a>
+            <a href="#solutions">VDR Analyzer</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#about">About</a>
+            <a href="#process">How We Work</a>
+            <a href="#contact">Contact</a>
+            <a href="https://calendly.com/prawinin" target="_blank" rel="noopener noreferrer">Book a Call</a>
+          </div>
+          <div class="footer-col">
+            <h4>Industries</h4>
+            <a href="#industries">Financial Services</a>
+            <a href="#industries">Healthcare & Sciences</a>
+            <a href="#industries">Public Sector</a>
+            <a href="#industries">Industrial & Energy</a>
+            <a href="#industries">Legal & Professional</a>
+            <a href="#industries">Commerce & Logistics</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 VyapAI. All rights reserved.</span>
+        <!-- Social links (uncomment when ready)
+        <div class="footer-social">
+          <a href="https://github.com/prawinin" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/prawinin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/prawinin" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+        -->
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav background on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,255,255,0.06)' : 'transparent';
+    }, { passive: true });
+  </script>
+
 </body>
 </html>
